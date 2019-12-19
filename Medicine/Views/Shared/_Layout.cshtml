@@ -1,0 +1,697 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Harun">
+    <meta name="keywords" content="Bootstrap 4 PSD  To HTML">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/Plugins/images/favicon.png" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700|Ubuntu:300,400,500,700&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="~/Plugins/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Plugins/css/fontawesome.min.css">
+    <link rel="stylesheet" href="~/Plugins/app.css">
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
+    <!-- ========== Header area ======== -->
+    <header class="header-section" style="background-image: url('Plugins/images/bg-1.jpg');">
+        <!-- Overlay -->
+        <div class="bg-overlay"></div>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg h-navbar">
+            <a class="navbar-brand" href="index.html">Logo</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav_expand">
+                <span class="fal fa-bars"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="nav_expand">
+                <ul class="navbar-nav ml-auto h-navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
+                            Services
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="m-search.html">Medicine Price</a>
+                            <a class="dropdown-item" href="donar-search.html">Blood Donar</a>
+                            <a class="dropdown-item" href="blood-request.html">Blood Request</a>
+
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
+                            Contribute
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#medicine-price" data-toggle="modal">Add Medicine Price</a>
+                            <a class="dropdown-item" href="#blood-donor-modal" data-toggle="modal"> Become a Blood Donar</a>
+                        </div>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#medicine-price" data-toggle="modal">Request For Blood</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0 h-user-btn ml-lg-5">
+                    <button class="btn btn-outline-light rounded-pill text-uppercase btn-login" type="button">login</button>
+                    <button class="btn btn-outline-light rounded-pill text-uppercase ml-3 btn-register" type="button">register</button>
+                </form>
+            </div>
+        </nav>
+        <!-- navbar end -->
+        <!-- Hero content -->
+        <div class="hero-content">
+            <div class="container">
+                <div class="hero-inner">
+                    <!-- search box Wrap -->
+                    <div class="search-box-wrap text-center">
+                        <!-- Medicine search box -->
+                        <div class="medicine-price show">
+                            <h2>Search Medicine Price</h2>
+                            <div class="home-search-box">
+                                <form action="">
+                                    <div class="search-input-group search-max-w-700">
+                                        <div class="full-filed">
+                                            <input type="text" class="form-control" placeholder="Search by medicine name">
+                                        </div>
+                                        <div class="submit-filed">
+                                            <input type="submit" class="form-control search-btn" value="search">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="popular-search-keyword">
+                                <h4>popular search :</h4>
+                                <ul class="keyword-list">
+                                    <li> <a href="#"> Adderall </a> </li>
+                                    <li> <a href="#"> Atitvan </a> </li>
+                                    <li> <a href="#"> Amlodipine </a> </li>
+                                    <li> <a href="#"> Adderall </a> </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Ambulnce search box -->
+                        <div class="donar-search ">
+                            <h2>Search Blood Donar In Your Area</h2>
+                            <div class="home-search-box ">
+                                <form action=" ">
+                                    <div class="search-input-group search-max-w-700 ">
+                                        <div class="full-filed ">
+                                            <input type="text " class="form-control " placeholder="Search by bloog group ">
+                                        </div>
+                                        <div class="submit-filed ">
+                                            <input type="submit " class="form-control search-btn " value="search ">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="popular-search-keyword ">
+                                <h4>popular search :</h4>
+                                <ul class="keyword-list ">
+                                    <li> <a href="# "> B+ </a> </li>
+                                    <li> <a href="# "> A+ </a> </li>
+                                    <li> <a href="# "> AB+ </a> </li>
+                                    <li> <a href="# "> O+ </a> </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Search box Wrap End -->
+                    <!-- search category item -->
+                    <div class="search-catagories ">
+                        <!-- section Title -->
+                        <div class="sction-title-card ">
+                            <h3>What Are You Looking For?</h3>
+                        </div>
+
+                        <!-- category item-->
+                        <div class="category-item bg-blue ">
+                            <a href="# " class="btn-medicine "> <i class="fal fa-tag "></i> Medicine price </a>
+                        </div>
+
+                        <!-- category item-->
+                        <div class="category-item bg-dark-red ">
+                            <a href="# " class="btn-b-donar "> <i class="fal fa-users "></i> Blood Donar </a>
+                        </div>
+
+                    </div>
+                    <!-- search category item end -->
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ========== Header area end ======== -->
+    <!-- Login And Register Info -->
+
+    <div class="popup-window popup-login">
+        <a href="#" class="popup-close"> <i class="fal fa-times"></i> </a>
+        <div class="popup-left">
+            <div class="content-center">
+                <h3>Welcome to helper</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate porro saepe at quas illo. Unde quae dicta, reiciendis quibusdam sunt molestias tenetur debitis facilis, porro molestiae minima eius? Aspernatur, vero.</p>
+            </div>
+        </div>
+
+        <div class="popup-right">
+            <div class="user-information">
+                <h3>Login</h3>
+
+
+                <form action="">
+                    <div class="user-form-wrap form-w-500">
+                        <div class="user-form-full">
+                            <input type="text" class="form-control" placeholder="Email">
+                        </div>
+                        <div class="user-form-full">
+                            <input type="text" class="form-control" placeholder="Password">
+                        </div>
+
+                        <div class="user-form-hulf">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="remembre_me">
+                                <label class="custom-control-label" for="remembre_me">Remeber Me</label>
+                            </div>
+                        </div>
+                        <div class="user-form-hulf text-right">
+                            <a href="#" class="btn-forget-pass">Forget Password?</a>
+                        </div>
+                        <div class="user-form-full">
+                            <input type="submit" class="btn btn-form-fill" value="sign in">
+                            <a href="#" class="btn btn-form-border btn-re-sign">sign Up</a>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Pop up -->
+
+    <div class="popup-window popup-register">
+        <a href="#" class="popup-close"> <i class="fal fa-times"></i> </a>
+        <div class="popup-left">
+            <div class="content-center">
+                <h3>Welcome to helper</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate porro saepe at quas illo. Unde quae dicta, reiciendis quibusdam sunt molestias tenetur debitis facilis, porro molestiae minima eius? Aspernatur, vero.</p>
+            </div>
+        </div>
+
+        <div class="popup-right padding-top-70">
+            <div class="user-information">
+                <h3> Register </h3>
+
+
+                <form action="">
+                    <div class="user-form-wrap">
+                        <!-- Single form -->
+                        <div class="user-form-hulf">
+                            <label for="image">Name</label>
+                            <input type="text" class="form-control" placeholder="Name">
+                        </div>
+                        <!-- Single form -->
+                        <div class="user-form-hulf">
+                            <label for="image">Email</label>
+                            <input type="text" class="form-control" placeholder="Email">
+                        </div>
+                        <!-- Single form -->
+                        <div class="user-form-hulf">
+                            <label for="image">Password</label>
+                            <input type="text" class="form-control" placeholder="Password">
+                        </div>
+                        <!-- Single form -->
+                        <div class="user-form-hulf">
+                            <label for="image">Re Password</label>
+                            <input type="text" class="form-control" placeholder="Re Password">
+                        </div>
+                        <!-- Single form -->
+                        <div class="user-form-hulf">
+                            <label for="image">Phone Number</label>
+                            <input type="text" class="form-control" placeholder="Phone Number">
+                        </div>
+                        <!-- Single form -->
+                        <div class="user-form-hulf">
+                            <label for="image">Profile Pic</label>
+
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
+                        </div>
+                        <!-- Single form -->
+                        <div class="user-form-full">
+                            <div class="custom-control custom-radio">
+                                <input type="checkbox" class="custom-control-input" id="blood_doanr">
+                                <label class="custom-control-label" for="blood_doanr">Want to be Blood Donar?</label>
+                            </div>
+                        </div>
+
+                        <div class="blood-donar-box" id="blood-donar-box">
+                            <!-- Single form -->
+                            <div class="user-form-hulf-3">
+                                <select class="custom-select">
+                                    <option selected disabled>Select Blood Group</option>
+                                    <option value="A+">A Positive (+)</option>
+                                    <option value="A+">A Negative (-)</option>
+                                    <option value="A+">B Positive (+)</option>
+                                    <option value="A+">B Negative (-)</option>
+                                    <option value="A+">AB Positive (+)</option>
+                                    <option value="A+">AB Negative (-)</option>
+                                    <option value="A+">O Positive (+)</option>
+                                    <option value="A+">O Negative (-)</option>
+                                </select>
+                            </div>
+                            <!-- Single form -->
+                            <div class="user-form-hulf-3">
+                                <input type="text" class="form-control" placeholder="Age">
+                            </div>
+                            <!-- Single form -->
+                            <div class="user-form-hulf-3">
+                                <input type="text" class="form-control" placeholder="Weight">
+                            </div>
+                            <!-- Single form -->
+                            <div class="user-form-hulf-3">
+                                <select class="custom-select">
+                                    <option selected disabled>Select Gender</option>
+                                    <option value="volvo">Male</option>
+                                    <option value="volvo">Female</option>
+                                </select>
+                            </div>
+                            <!-- Single form -->
+                            <div class="user-form-hulf-3">
+                                <select class="custom-select">
+                                    <option selected disabled>Smoker ?</option>
+                                    <option value="volvo">smoker</option>
+                                    <option value="volvo">Nonsmoker</option>
+                                </select>
+                            </div>
+                            <!-- Single form -->
+                            <div class="user-form-hulf-3">
+                                <select class="custom-select">
+                                    <option selected disabled>Drug Accidted ?</option>
+                                    <option value="volvo">Non-addicted</option>
+                                    <option value="volvo">Addicted</option>
+                                </select>
+                            </div>
+                            <!-- Single form -->
+                            <div class="user-form-hulf">
+                                <select class="custom-select">
+                                    <option selected disabled>How Many Time Donate Blood?</option>
+                                    <option value="volvo">N/A</option>
+                                    <option value="fiat">Single Time</option>
+                                    <option value="audi">Multiple Time</option>
+                                </select>
+                            </div>
+                            <!-- Single form -->
+                            <div class="user-form-hulf">
+                                <input type="date" class="form-control" placeholder="Last Donation Date">
+                            </div>
+                            <!-- Single form -->
+                            <div class="user-form-hulf">
+                                <input type="text" class="form-control" placeholder="Location Ex. Mirpur Pallabi">
+                            </div>
+                            <!-- Single form -->
+                            <div class="user-form-hulf">
+                                <select class="custom-select">
+                                    <option selected disabled>District</option>
+                                    <option value="Thakurgaon ">Thakurgaon </option>
+                                    <option value="Thakurgaon ">Thakurgaon </option>
+                                    <option value="Thakurgaon ">Thakurgaon </option>
+                                    <option value="Thakurgaon ">Thakurgaon </option>
+                                    <option value="Thakurgaon ">Thakurgaon </option>
+                                    <option value="Thakurgaon ">Thakurgaon </option>
+                                    <option value="Thakurgaon ">Thakurgaon </option>
+                                    <option value="Thakurgaon ">Thakurgaon </option>
+                                    <option value="Thakurgaon ">Thakurgaon </option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <!-- Single form -->
+                        <div class="user-form-full">
+                            <input type="submit" class="btn btn-form-fill" value="sign Up">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Forget Password -->
+    <div class="popup-window popup-reset">
+        <a href="#" class="popup-close"> <i class="fal fa-times"></i> </a>
+        <div class="popup-left">
+            <div class="content-center">
+                <h3>Welcome to helper</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate porro saepe at quas illo. Unde quae dicta, reiciendis quibusdam sunt molestias tenetur debitis facilis, porro molestiae minima eius? Aspernatur, vero.</p>
+            </div>
+        </div>
+
+        <div class="popup-right">
+            <div class="user-information">
+                <h3> Reset Password </h3>
+
+
+                <form action="">
+                    <div class="user-form-wrap form-w-500">
+                        <div class="user-form-full">
+                            <input type="text" class="form-control" placeholder="New Password">
+                        </div>
+                        <div class="user-form-full">
+                            <input type="text" class="form-control" placeholder="Re Password">
+                        </div>
+
+
+                        <div class="user-form-full">
+                            <input type="submit" class="btn btn-form-fill" value="Reset Password">
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!--  Add Medicine price -->
+
+    <div class="modal fade" id="medicine-price">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="modal-inner">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="user-information">
+                                        <h3>Medicine information</h3>
+                                        <p>Please, Input the information Very carefully with 100% Right information.</p>
+
+                                        <form action="" class="mt-5">
+
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                    <div class="user-form-full">
+                                                        <label for="m-name">Medicine Name</label>
+                                                        <input type="text" class="form-control" placeholder="Napa" id="m-name">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="user-form-full">
+                                                        <label for="m-type">Medicine Type</label>
+                                                        <select class="custom-select" id="m-type">
+                                                            <option selected disabled>Choose type</option>
+                                                            <option value="volvo">Tablet</option>
+                                                            <option value="fiat">Syrup</option>
+                                                            <option value="audi">Capsule</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="user-form-full">
+                                                        <label for="m-size">Medicine Size</label>
+                                                        <select class="custom-select" id="m-size">
+                                                            <option selected disabled>Choose size</option>
+                                                            <option value="volvo">100 mg</option>
+                                                            <option value="fiat">250 mg</option>
+                                                            <option value="audi">400 mg</option>
+                                                            <option value="audi">500 mg</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="user-form-full">
+                                                        <label for="c-name">Company Name</label>
+                                                        <input type="text" class="form-control" placeholder="Beximco Pharmaceuticals Ltd" id="c-name">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="user-form-full">
+                                                        <label for="t-price">Total Price</label>
+                                                        <input type="text" class="form-control" placeholder="400" id="t-price">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="user-form-full">
+                                                        <label for="u-price">Unit Price</label>
+                                                        <input type="text" class="form-control" placeholder="4" id="u-price">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="user-form-full">
+                                                        <label for="m-detail">Details About Medicine</label>
+                                                        <textarea name="" class="form-control" id="m-detail" rows="4"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="user-form-full">
+                                                        <label for="image">Upload Image</label>
+                                                        <div class="image-preview">
+
+                                                        </div>
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                            <label class="custom-file-label" for="customFile">Choose file</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="user-form-full">
+                                                        <input type="submit" class="btn btn-form-fill" value="Submit">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--  Blood Donor -->
+
+    <div class="modal fade" id="blood-donor-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="modal-inner">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="user-information">
+                                        <h3>Blood Donor information</h3>
+                                        <p>Please, Input the information Very carefully with 100% Right information.</p>
+
+                                        <form action="" class="mt-5">
+
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <div class="user-form-full">
+                                                        <label for="d-name">Donor Name</label>
+                                                        <input type="text" class="form-control" placeholder="Harun Rashid" id="d-name">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <div class="user-form-full">
+                                                        <label for="d-number">Contact Number</label>
+                                                        <input type="text" class="form-control" placeholder="01737485288" id="d-number">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <div class="user-form-full">
+                                                        <label for="d-age">Age </label>
+                                                        <input type="text" class="form-control" placeholder="18" id="d-age">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <div class="user-form-full">
+                                                        <label for="d-weight">Weight</label>
+                                                        <input type="text" class="form-control" placeholder="52 kg" id="d-weight">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <div class="user-form-full">
+                                                        <label for="d-gender">Gender</label>
+                                                        <select class="custom-select" id="d-gender">
+                                                            <option selected disabled>Choose gender</option>
+                                                            <option value="volvo">Male</option>
+                                                            <option value="fiat">Female</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <div class="user-form-full">
+                                                        <label for="blood-group">Blood Group</label>
+                                                        <select class="custom-select" id="blood-group">
+                                                            <option selected disabled>Choose group</option>
+                                                            <option value="volvo">B Positive (+)</option>
+                                                            <option value="fiat">A Positive (+)</option>
+                                                            <option value="audi">AB Positive (+)</option>
+                                                            <option value="audi">O Positive (+)</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <div class="user-form-full">
+                                                        <label for="d-time">Blood Donate</label>
+                                                        <select class="custom-select" id="d-time">
+                                                            <option selected disabled>Choose Option</option>
+                                                            <option value="volvo">N/A</option>
+                                                            <option value="fiat">One times</option>
+                                                            <option value="audi">Multiple</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-lg-2">
+                                                    <div class="user-form-full">
+                                                        <label for="d-avi">Ready For Donation</label>
+                                                        <select class="custom-select" id="d-avi">
+                                                            <option selected disabled>Choose Option</option>
+                                                            <option value="volvo">YES</option>
+                                                            <option value="fiat">NO</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-lg-2">
+                                                    <div class="user-form-full">
+                                                        <label for="d-date">Last Donation Date</label>
+                                                        <select class="custom-select" id="d-date">
+                                                            <option selected disabled>Choose Option</option>
+                                                            <option value="volvo">N/A</option>
+                                                            <option value="fiat">3 Months</option>
+                                                            <option value="fiat">6 Months</option>
+                                                            <option value="fiat">10 Months</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <div class="user-form-full">
+                                                        <label for="smoker">Smoker?</label>
+                                                        <select class="custom-select" id="smoker">
+                                                            <option selected disabled>Choose Option</option>
+                                                            <option value="fiat">Smoker</option>
+                                                            <option value="volvo">Non-Smoker</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <div class="user-form-full">
+                                                        <label for="d-addicated">Drug Addicted? </label>
+                                                        <select class="custom-select" id="d-addicated">
+                                                            <option selected disabled>Choose Option</option>
+                                                            <option value="fiat">Addicted</option>
+                                                            <option value="volvo">Non-Addicted</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="user-form-full">
+                                                        <label for="d-location">Location </label>
+                                                        <input type="text" class="form-control" placeholder="Mirpur Pallabi Dhaka 1216" id="d-location">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="user-form-full">
+                                                        <label for="d-district">District </label>
+                                                        <select class="custom-select" id="d-district">
+                                                            <option selected disabled>Choose Option</option>
+                                                            <option value="fiat">Addicted</option>
+                                                            <option value="volvo">Non-Addicted</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-lg-4">
+                                                    <div class="user-form-full">
+                                                        <label for="image">Upload Image</label>
+                                                        <div class="image-preview">
+
+                                                        </div>
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                            <label class="custom-file-label" for="customFile">Choose file</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="user-form-full">
+                                                        <input type="submit" class="btn btn-form-fill" value="Submit">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    @RenderBody()
+
+
+
+    <!--======================================================
+    modernizr ,then jQuery, then Popper.js, then Bootstrap JS
+    ==========================================================-->
+    <script src="~/Plugins/js/modernizr-3.6.0.min.js "></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js "></script>
+    <script src="~/Plugins/js/bootstrap.min.js "></script>
+    <script src="~/Plugins/js/plugns.js "></script>
+    <script src="~/Plugins/js/scripts.js "></script>
+
+</body>
+
+</html>
