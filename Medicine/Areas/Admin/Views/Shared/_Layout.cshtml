@@ -57,19 +57,19 @@
                         <li class="slide">
                             <a class="side-menu__item" data-toggle="slide" href="#">
                                 <i class="side-menu__icon fe fe-grid"></i>
-                                <span class="side-menu__label">Medicine Price</span>
+                                <span class="side-menu__label">Medicine</span>
                                 <i class="angle fa fa-angle-right"></i>
                             </a>
 
                             <ul class="slide-menu">
                                 <li>
-                                    <a href="add-m.html" class="slide-item">Add Medicine Price</a>
+                                    <a href="@Url.Action("Add","Medicine", new { Area = "Admin" })" class="slide-item">Add Medicine</a>
                                 </li>
                                 <li>
-                                    <a href="medicine-pending.html" class="slide-item">Pending Apporval</a>
+                                    <a href="@Url.Action("Pending","Medicine", new { Area = "Admin" })" class="slide-item">Pending Apporval</a>
                                 </li>
                                 <li>
-                                    <a href="all-medicine.html" class="slide-item">View All Medicine</a>
+                                    <a href="@Url.Action("Index","Medicine", new { Area = "Admin" })" class="slide-item">View All Medicine</a>
                                 </li>
                             </ul>
                         </li>
@@ -152,7 +152,7 @@
 
                                 <!-- Brand -->
                                 <a class="navbar-brand pt-0 d-md-none" href="index-2.html">
-                                    <img src="assets/img/brand/logo-light.png" class="navbar-brand-img" alt="...">
+                                    <img src="~/Plugins/Admin/assets/img/brand/logo-light.png" class="navbar-brand-img" alt="...">
                                 </a>
                                 <!-- Form -->
                                 <form class="navbar-search navbar-search-dark form-inline mr-3 ml-lg-auto">
@@ -177,14 +177,14 @@
                                             <a href="#" class="dropdown-item text-center">12 New Messages</a>
                                             <div class="dropdown-divider"></div>
                                             <a href="#" class="dropdown-item d-flex">
-                                                <span class="avatar brround mr-3 align-self-center"><img src="assets/img/faces/male/41.jpg" alt="img"></span>
+                                                <span class="avatar brround mr-3 align-self-center"><img src="~/Plugins/Admin/assets/img/faces/male/41.jpg" alt="img"></span>
                                                 <div>
                                                     <strong>Madeleine</strong> Hey! there I' am available....
                                                     <div class="small text-muted">3 hours ago</div>
                                                 </div>
                                             </a>
                                             <a href="#" class="dropdown-item d-flex">
-                                                <span class="avatar brround mr-3 align-self-center"><img src="assets/img/faces/female/1.jpg" alt="img"></span>
+                                                <span class="avatar brround mr-3 align-self-center"><img src="~/Plugins/Admin/assets/img/faces/female/1.jpg" alt="img"></span>
                                                 <div>
                                                     <strong>Anthony</strong> New product Launching...
                                                     <div class="small text-muted">5  hour ago</div>
@@ -226,7 +226,7 @@
                                     <li class="nav-item dropdown">
                                         <a aria-expanded="false" aria-haspopup="true" class="nav-link pr-md-0" data-toggle="dropdown" href="#" role="button">
                                             <div class="media align-items-center">
-                                                <span class="avatar avatar-sm rounded-circle"><img alt="Image placeholder" src="assets/img/faces/female/32.jpg"></span>
+                                                <span class="avatar avatar-sm rounded-circle"><img alt="Image placeholder" src="~/Plugins/Admin/assets/img/faces/female/32.jpg"></span>
                                                 <div class="media-body ml-2 d-none d-lg-block">
                                                     <span class="mb-0 ">Cori Stover</span>
                                                 </div>
@@ -249,209 +249,9 @@
                         <!-- Top navbar-->
                         <!-- Page content -->
                         <div class="container-fluid pt-8">
-                            <!-- Page Breadcumbs -->
-                            <div class="page-header mt-0 shadow p-3">
-                                <ol class="breadcrumb mb-sm-0">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Sales Dashboard</li>
-                                </ol>
-                            </div>
-
-
-
 
 
                             @RenderBody()
-
-                            <div class="row">
-                                <div class="col-xl-3">
-                                    <div class="card shadow overflow-hidden">
-                                        <div class="card-body">
-                                            <div class="widget text-center">
-                                                <div><i class="fas fa-users fa-5x text-yellow"></i></div>
-                                                <h4 class="text-muted mt-2 mb-0">Online Visitors</h4>
-                                                <h2 class="display-2 mb-0">25,685</h2>
-                                                <a href="#" class="btn btn-outline-yellow mt-3 btn-sm btn-pill">view all</a>
-                                            </div>
-                                        </div>
-                                        <span class="updating-chart" data-peity='{ "fill": ["#ffa21d"]}'>5,3,9,6,5,9,2,5,3,6,7,8,6</span>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3">
-                                    <div class="">
-                                        <div class="">
-                                            <div class="row">
-                                                <div class="col-xl-12 col-lg-12 col-sm-12">
-                                                    <div class="card shadow overflow-hidden">
-                                                        <div class="card-body pb-0">
-                                                            <div class="widget text-center">
-                                                                <small class="text-muted">Sales Monthly</small>
-                                                                <h2 class="text-xxl mb-0">$ 8,343</h2>
-                                                            </div>
-                                                        </div>
-                                                        <span class="bar" data-peity='{ "fill": ["#00c3ed"]}'>5,4,5,2,8,4,5,6,5,2,4,4,8,4,6,2,3,4</span>
-                                                    </div>
-                                                    <div class="card shadow overflow-hidden">
-                                                        <div class="card-body pb-0">
-                                                            <div class="widget text-center">
-                                                                <small class="text-muted">Sales Weekly</small>
-                                                                <h2 class="text-xxl mb-0">$ 683</h2>
-                                                            </div>
-                                                        </div>
-                                                        <span class="bar" data-peity='{ "fill": ["#18b16f"]}'>5,4,5,2,8,4,5,6,5,2,4,4,8,4,6,2,3,4</span>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6">
-                                    <div class="">
-                                        <div class="">
-                                            <div class="row">
-                                                <div class="col-xl-6 col-lg-6 col-sm-6">
-                                                    <div class="card shadow">
-                                                        <div class="card-body">
-                                                            <div class="widget text-center">
-                                                                <small class="">Average Revenue per unit</small>
-                                                                <h2 class="text-xxl mb-1 text-success">$ 142</h2>
-                                                                <p class="mb-0"><span class=""><i class="fas fa-caret-up ml-1 text-success"></i> 4%</span>  last month</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card shadow">
-                                                        <div class="card-body">
-                                                            <div class="widget text-center">
-                                                                <small class="">Customer Lifetime Value</small>
-                                                                <h2 class="text-xxl mb-1 text-yellow">$ 256</h2>
-                                                                <p class="mb-0"><span class=""><i class="fas fa-caret-down text-danger ml-1"></i> 5%</span> last month</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-6 col-lg-6 col-sm-6">
-                                                    <div class="card shadow">
-                                                        <div class="card-body">
-                                                            <div class="widget text-center">
-                                                                <small class="">Customer Acquisition Cost</small>
-                                                                <h2 class="text-xxl text-primary mb-1">$ 329</h2>
-                                                                <p class="mb-0"><span class=""><i class="fas fa-caret-up text-success ml-1"></i> 6%</span> last month</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card shadow">
-                                                        <div class="card-body">
-                                                            <div class="widget text-center">
-                                                                <small class="">Monthly Sales Growth</small>
-                                                                <h2 class="text-xxl text-danger mb-1">12%</h2>
-                                                                <p class="mb-0"><span class=""><i class="fas fa-caret-down text-danger ml-1"></i> 8%</span> last month</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="row">
-                                <div class="col">
-                                    <div class="card shadow">
-                                        <div class="card-header bg-transparent border-0">
-                                            <h2 class=" mb-0">Product Sales Tables</h2>
-                                        </div>
-                                        <div class="">
-                                            <div class="grid-margin">
-                                                <div class="">
-                                                    <div class="table-responsive">
-                                                        <table class="table card-table table-vcenter text-nowrap align-items-center">
-                                                            <thead class="thead-light">
-                                                                <tr>
-                                                                    <th>Product</th>
-                                                                    <th>Sold</th>
-                                                                    <th>Record point</th>
-                                                                    <th>Stock</th>
-                                                                    <th>Amount</th>
-                                                                    <th>Stock Status</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td class="text-sm font-weight-600">Women Wallet-E32N</td>
-                                                                    <td>18</td>
-                                                                    <td>05</td>
-                                                                    <td>112</td>
-                                                                    <td>$ 2,356</td>
-                                                                    <td>In Stock</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="text-sm font-weight-600">Phone-345S</td>
-                                                                    <td>10</td>
-                                                                    <td>04</td>
-                                                                    <td>210</td>
-                                                                    <td>$ 3,522</td>
-                                                                    <td>In Stock</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="text-sm font-weight-600">Doll-Elephant</td>
-                                                                    <td>15</td>
-                                                                    <td>05</td>
-                                                                    <td>215</td>
-                                                                    <td>$ 5,362</td>
-                                                                    <td>In Stock</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="text-sm font-weight-600">Women-Kurtis</td>
-                                                                    <td>21</td>
-                                                                    <td>07</td>
-                                                                    <td>102</td>
-                                                                    <td>$ 1,326</td>
-                                                                    <td>In Stock</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="text-sm font-weight-600">Mens Shoes</td>
-                                                                    <td>34</td>
-                                                                    <td>10</td>
-                                                                    <td>325</td>
-                                                                    <td>$ 5,234</td>
-                                                                    <td>In Stock</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="text-sm font-weight-600">Mens Gold Metal Watch</td>
-                                                                    <td>11</td>
-                                                                    <td>04</td>
-                                                                    <td>5</td>
-                                                                    <td>$ 3,256</td>
-                                                                    <td>
-                                                                        <i class="fas fa-exclamation-triangle text-warning"></i>  Out of stock
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="text-sm font-weight-600">Laptop</td>
-                                                                    <td>60</td>
-                                                                    <td>10</td>
-                                                                    <td>0</td>
-                                                                    <td>$ 7,652</td>
-                                                                    <td>
-                                                                        <i class="fas fa-exclamation-triangle text-danger"></i> Out of stock
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
 
 
                             <!-- Footer -->
@@ -459,7 +259,7 @@
                                 <div class="row align-items-center justify-content-xl-between">
                                     <div class="col-xl-6">
                                         <div class="copyright text-center text-xl-left text-muted">
-                                            <p class="text-sm font-weight-500">Copyright 2019 © All Rights Reserved.</p>
+                                            <p class="text-sm font-weight-500">Copyright @DateTime.Now.Year © All Rights Reserved.</p>
                                         </div>
                                     </div>
 
@@ -509,6 +309,7 @@
     <script src="~/Plugins/Admin/assets/js/custom.js"></script>
     <script src="~/Plugins/Admin/assets/js/dashboard-sales.js"></script>
 
+    @RenderSection("scripts", required: false)
 </body>
 
 </html>

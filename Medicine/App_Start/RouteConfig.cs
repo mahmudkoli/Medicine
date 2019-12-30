@@ -17,7 +17,7 @@ namespace Medicine
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new[] { "Medicine.Controllers" }
+                namespaces: new[] { "Medicine.Web.Controllers" }
             );
         }
     }

@@ -1,0 +1,116 @@
+﻿using Medicine.Entities;
+using Medicine.Services;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Web;
+using Medicine.Authentication;
+using Medicine.Common;
+
+namespace Medicine.Web.Models
+{
+    public class UserModel : User
+    {
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm Password")]
+        [Compare("Password", ErrorMessage = "Confirm password and password do not match")]
+        public string ConfirmPassword { get; set; }
+
+        public string executeMessage;
+        private UserService _userService;
+
+        public IEnumerable<string> UserRoles { get; set; }
+        public UserModel()
+        {
+            executeMessage = "";
+            _userService = new UserService();
+
+            UserRoles = new List<string> { Role.Admin, Role.NormalUser };
+        }
+
+        public bool Registration()
+        {
+            return _userService.Registration(this);
+        }
+        public IEnumerable<User> GetAll()
+        {
+            return _userService.GetAll();
+        }
+
+        public User IsAuthenticatedUser(LoginUserModel model)
+        {
+            try
+            {
+                var user = _userService.GetByEmail(model.Email);
+
+                if (user != null)
+                {
+                    if (!user.IsEmailVerified)
+                    {
+                        executeMessage = "Please verify your email first";
+                        return null;
+                    }
+
+                    if (String.Compare(CustomCrypto.Hash(model.Password), user.Password) == 0)
+                    {
+                        CustomFormsAuthentication.Login(user, model.RememberMe);
+                        executeMessage = "";
+                        return user;
+                    }
+                    else
+                    {
+                        executeMessage = "Invalid user email or password";
+                        return null;
+                    }
+                }
+                else
+                {
+                    executeMessage = "Invalid user email or password";
+                    return null;
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                executeMessage = ex.Message;
+                return null;
+            }
+        }
+
+        public bool IsEmailExist(UserModel model)
+        {
+            var user = _userService.GetByEmail(model.Email);
+            return user != null;
+        }
+
+        public bool EmailVerification(string code)
+        {
+            return _userService.EmailVerification(code);
+        }
+
+        public bool SendResetPasswordCode(LoginUserModel model)
+        {
+            return _userService.SendResetPasswordCode(model.Email);
+        }
+
+        public bool IsResetPasswordCodeExist(string code)
+        {
+            return _userService.IsResetPasswordCodeExist(code);
+        }
+
+        public bool ResetUserPassword(ResetPasswordModel model)
+        {
+            var user = new User()
+            {
+                Password = model.NewPassword,
+                ResetPasswordCode = model.ResetCode
+            };
+
+            return _userService.ResetUserPassword(user);
+        }
+    }
+}

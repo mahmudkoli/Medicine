@@ -1,0 +1,129 @@
+﻿@using Medicine.Common
+@model Medicine.Web.Models.LoginUserModel
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+    <meta name="author" content="Creative Tim">
+
+    <!-- Title -->
+    <title>Login | @DefaultValue.CompanyShortName</title>
+
+    <!-- Favicon -->
+    <link href="assets/img/brand/favicon.png" rel="icon" type="image/png">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="~/Plugins/Admin/assets/css/icons.css" rel="stylesheet">
+
+    <!--Bootstrap.min css-->
+    <link rel="stylesheet" href="~/Plugins/Admin/assets/plugins/bootstrap/css/bootstrap.min.css">
+
+    <!-- Ansta CSS -->
+    <link href="~/Plugins/Admin/assets/css/dashboard.css" rel="stylesheet" type="text/css">
+
+    <!-- Single-page CSS -->
+    <link href="~/Plugins/Admin/assets/plugins/single-page/css/main.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="bg-gradient-primary">
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100 p-5">
+
+
+
+                @using (Html.BeginForm("Login", "User", new { @class = "" }))
+                {
+                    <div class="login100-form validate-form">
+                @Html.AntiForgeryToken()
+
+                    <span class="login100-form-title">
+                        Login to @DefaultValue.CompanyShortName!
+                    </span>
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                    <div class="wrap-input100 validate-input">
+                        @*<input class="" type="text" name="email" placeholder="Email">*@
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input100", @placeholder = "Email" } })
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+
+                    </div>
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+                    <div class="wrap-input100 validate-input">
+                        @*<input class="input100" type="password" name="pass" placeholder="Password">*@
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input100", @placeholder = "Password" } })
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+
+                    </div>
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+                    <div class="container-login100-form-btn">
+                        @*<a href="index-2.html" class="login100-form-btn btn-primary">
+                    Login
+                </a>*@
+                        <input class="login100-form-btn btn-primary" type="submit" value="Login">
+                    </div>
+
+                    <div class="text-center pt-2">
+                        <span class="txt1">
+                            Forgot
+                        </span>
+                        <a class="txt2" href="forgot.html">
+                            Username / Password?
+                        </a>
+                    </div>
+
+                    <div class="text-center pt-1">
+                        <a class="txt2" href="register.html">
+                            Create your Account
+                            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Ansta Scripts -->
+    <!-- Core -->
+    <script src="~/Plugins/Admin/assets/plugins/jquery/dist/jquery.min.js"></script>
+    <script src="~/Plugins/Admin/assets/js/popper.js"></script>
+    <script src="~/Plugins/Admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('input[type="checkbox"]').change(function () {
+                if ($(this).is(':checked')) {
+                    $(this).val('true');
+                } else {
+                    $(this).val('false');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

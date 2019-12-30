@@ -1,0 +1,139 @@
+﻿@model Medicine.Web.Areas.Admin.Model.MedicineModel
+@{
+    ViewBag.Title = "Add";
+}
+
+<!-- form Uploads -->
+<link href="~/Plugins/Admin/assets/plugins/fileuploads/css/dropify.css" rel="stylesheet" type="text/css" />
+
+<!-- Page Breadcumbs -->
+<div class="page-header mt-0 shadow p-3">
+    <ol class="breadcrumb mb-sm-0">
+        <li class="breadcrumb-item"><a href="@Url.Action("Index","Home", new { Area = "Admin" })">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Add Medicine </li>
+    </ol>
+    <a href="@Url.Action("Index","Medicine")" class="btn btn-primary btn-sm btn-pill  mb-0">All Medicine</a>
+</div>
+
+@using (Html.BeginForm("Add", "Medicine", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card shadow">
+                <div class="card-header">
+                    <h2 class="mb-0">Medicine information</h2>
+                </div>
+                <div class="card-body">
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label">@Html.DisplayNameFor(model => model.Name)</label>
+                                @*<input type="text" class="form-control" name="example-text-input" placeholder="Napa">*@
+
+                                @Html.TextBoxFor(c => c.Name, new { @class = "form-control", @placeholder = "Medicine Name" })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">@Html.DisplayNameFor(model => model.CompanyId)</label>
+                                @*<input type="text" class="form-control" name="example-text-input" placeholder="Napa">*@
+                                @Html.DropDownListFor(c => c.CompanyId, new SelectList(Model.Companies, "Id", "Name"), "---Select---", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.CompanyId, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group mb-0">
+                                <label class="form-label">@Html.DisplayNameFor(model => model.Details)</label>
+                                @*<textarea class="form-control" name="example-textarea-input" rows="4" placeholder="text here.."></textarea>*@
+                                @Html.TextAreaFor(c => c.Details, new { @class = "form-control", @rows = "6", @placeholder = "Details" })
+                                @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-md-4">
+
+                            <div class="form-group">
+                                <label class="form-label">@Html.DisplayNameFor(model => model.MedicineType)</label>
+                                @*<select name="country" id="select-countries" class="form-control custom-select">
+                    <option selected disabled>Choose type</option>
+                    <option value="volvo">Tablet</option>
+                    <option value="fiat">Syrup</option>
+                    <option value="audi">Capsule</option>
+                </select>*@
+                                @Html.DropDownListFor(c => c.MedicineType, new SelectList(Model.MedicineTypes), "---Select---", new { @class = "form-control custom-select" })
+                                @Html.ValidationMessageFor(model => model.MedicineType, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">@Html.DisplayNameFor(model => model.MedicineSize)</label>
+                                @*<select name="country" id="select-countries" class="form-control custom-select">
+                    <option selected disabled>Choose size</option>
+                    <option value="volvo">100 mg</option>
+                    <option value="fiat">250 mg</option>
+                    <option value="audi">400 mg</option>
+                    <option value="audi">500 mg</option>
+                </select>*@
+                                @Html.DropDownListFor(c => c.MedicineSize, new SelectList(Model.MedicineSizes), "---Select---", new { @class = "form-control custom-select" })
+                                @Html.ValidationMessageFor(model => model.MedicineSize, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">@Html.DisplayNameFor(model => model.TotalPrice)</label>
+                                @*<textarea class="form-control" name="example-textarea-input" rows="4" placeholder="text here.."></textarea>*@
+                                @Html.TextBoxFor(c => c.TotalPrice, new { @class = "form-control", @placeholder = "Total Price" })
+                                @Html.ValidationMessageFor(model => model.TotalPrice, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">@Html.DisplayNameFor(model => model.UnitPrice)</label>
+                                @*<textarea class="form-control" name="example-textarea-input" rows="4" placeholder="text here.."></textarea>*@
+                                @Html.TextBoxFor(c => c.UnitPrice, new { @class = "form-control", @placeholder = "Unit Price" })
+                                @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+
+                            <div class="form-group">
+                                <div class="form-label">@Html.DisplayNameFor(model => model.ImageFileBase)</div>
+                                <div class="card overflow-hidden">
+                                    <input type="file" class="dropify" data-height="240" id="imageFile" name="ImageFileBase" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary btn-pill mt-4 mb-1">Submit</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+}
+
+@section scripts{
+
+    @Scripts.Render("~/bundles/jqueryval")
+    <!-- file uploads js -->
+    <script src="~/Plugins/Admin/assets/plugins/fileuploads/js/dropify.min.js"></script>
+    <script>
+        $('.dropify').dropify({
+            messages: {
+                'default': 'Drag and drop a file here or click',
+                'replace': 'Drag and drop or click to replace',
+                'remove': 'Remove',
+                'error': 'Ooops, something wrong appended.'
+            },
+            error: {
+                'fileSize': 'The file size is too big (2M max).'
+            }
+        });
+    </script>
+}
