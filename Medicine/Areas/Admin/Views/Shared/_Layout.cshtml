@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Medicine.Common
+@using Medicine.Web.Models
+    
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
@@ -37,6 +40,17 @@
 
 </head>
 <body class="app sidebar-mini rtl">
+
+    @{
+        var authUser = AuthenticatedUserModel.GetUserFromIdentity();
+
+        var routeValues = ViewContext.RouteData.Values;
+        var currentAction = routeValues["Action"].ToString();
+        var currentController = routeValues["Controller"].ToString();
+        var userImageUrl = string.IsNullOrEmpty(authUser.ImageUrl) ?  "~/Content/Images/no-image.jpg" : authUser.ImageUrl;
+    }
+
+
     <div id="global-loader"></div>
     <div class="page">
         <div class="page-main">
@@ -226,9 +240,9 @@
                                     <li class="nav-item dropdown">
                                         <a aria-expanded="false" aria-haspopup="true" class="nav-link pr-md-0" data-toggle="dropdown" href="#" role="button">
                                             <div class="media align-items-center">
-                                                <span class="avatar avatar-sm rounded-circle"><img alt="Image placeholder" src="~/Plugins/Admin/assets/img/faces/female/32.jpg"></span>
+                                                <span class="avatar avatar-sm rounded-circle"><img alt="Image placeholder" src="@Url.Content(userImageUrl)"></span>
                                                 <div class="media-body ml-2 d-none d-lg-block">
-                                                    <span class="mb-0 ">Cori Stover</span>
+                                                    <span class="mb-0 ">@authUser.Name</span>
                                                 </div>
                                             </div>
                                         </a>
@@ -236,11 +250,16 @@
                                             <div class=" dropdown-header noti-title">
                                                 <h6 class="text-overflow m-0">Welcome!</h6>
                                             </div>
-                                            <a class="dropdown-item" href="user-profile.html"><i class="ni ni-single-02"></i> <span>My profile</span></a>
+                                            <a class="dropdown-item" href="@Url.Action("Profile","Profile",new { Area = "Admin" })"><i class="ni ni-single-02"></i> <span>My profile</span></a>
                                             <a class="dropdown-item" href="#"><i class="ni ni-settings-gear-65"></i> <span>Settings</span></a>
                                             <a class="dropdown-item" href="#"><i class="ni ni-calendar-grid-58"></i> <span>Activity</span></a>
                                             <a class="dropdown-item" href="#"><i class="ni ni-support-16"></i> <span>Support</span></a>
-                                            <div class="dropdown-divider"></div><a class="dropdown-item" href="login.html"><i class="ni ni-user-run"></i> <span>Logout</span></a>
+                                            <div class="dropdown-divider"></div>
+                                            @*<a class="dropdown-item" href="login.html"><i class="ni ni-user-run"></i> <span>Logout</span></a>*@
+                                            @using (Html.BeginForm("Logout", "User", new { area = "" }, FormMethod.Post, new { id = "logoutForm" }))
+                                            {
+                                                <a href="javascript:document.getElementById('logoutForm').submit()" class="dropdown-item"><i class="ni ni-user-run"></i> <span>Logout</span></a>
+                                            }
                                         </div>
                                     </li>
                                 </ul>

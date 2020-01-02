@@ -16,12 +16,12 @@ $(document).ready(function($) {
 
     // Chanegs Bg
     $(".btn-medicine").click(function() {
-        $(".header-section").css('background-image', 'url(images/bg-1.jpg)');
+        $(".header-section").css('background-image', 'url(Plugins/images/bg-1.jpg)');
         return false;
     });
    
     $(".btn-b-donar").click(function() {
-        $(".header-section").css('background-image', 'url(images/bg-3.jpg)');
+        $(".header-section").css('background-image', 'url(Plugins/images/bg-3.jpg)');
         return false;
     });
 

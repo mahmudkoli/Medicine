@@ -1,0 +1,30 @@
+﻿@model Medicine.Entities.MedicineInfo
+
+<div class="col-lg-6">
+    <div class="search-card approved-card">
+        <div class="card-head">
+            <div class="card-head-left">
+                <h3 class="card-title"> @Model.Name @Model.MedicineSize (@Model.MedicineType) <a href="@Url.Action("Details","Medicine", new { id = Model.Id })" class="btn-img"> Show image </a> </h3>
+                <h4 class="card-price"> BDT @Model.TotalPrice (Unit Price : BDT @Model.UnitPrice)</h4>
+                <span class="card-date">Last Update: @((Model.UpdatedAt??Model.CreatedAt)?.ToString("dd MMM, yyyy")??"")  </span>
+            </div>
+            <div class="card-head-right">
+                <span class="card-verifyed"><i class="fas fa-badge-check"></i> @Model.Status.ToString()</span>
+            </div>
+        </div>
+        <div class="card-content">
+            <p>
+                @Model.Details
+            </p>
+        </div>
+        <div class="card-fot">
+            <div class="card-footer-left">
+                <a href="@Url.Action("Details","Medicine", new { id = Model.Id })" class="read-btn">Read More</a>
+            </div>
+            <div class="card-footer-right">
+                <a href="@Url.Action("Report","Medicine", new { id = Model.Id })" class="card-helper"> <i class="fal fa-flag-alt"></i> Report (@Model.ReportCount)</a>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -48,6 +48,11 @@ namespace Medicine.Services
             }
         }
 
+        public IEnumerable<MedicineInfo> GetAll(string medicineName, string medicineSize, string medicineType)
+        {
+            return _medicineUnitOfWork.MedicineRepository.GetAll(medicineName, medicineSize, medicineType);
+        }
+
         public IEnumerable<MedicineInfo> GetAll()
         {
             return _medicineUnitOfWork.MedicineRepository.GetAll();

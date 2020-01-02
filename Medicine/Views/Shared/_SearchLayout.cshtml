@@ -1,0 +1,53 @@
+﻿@using Medicine.Common
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <title>@ViewBag.Title | @DefaultValue.CompanyShortName</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Harun">
+    <meta name="keywords" content="Bootstrap 4 PSD  To HTML">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/Plugins/images/favicon.png" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700|Ubuntu:300,400,500,700&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="~/Plugins/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Plugins/css/fontawesome.min.css">
+    <link rel="stylesheet" href="~/Plugins/app.css">
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
+    <!-- Navbar -->
+    @Html.Partial("_TopNavBarPartial")
+
+    @RenderBody()
+
+    <!-- Footer -->
+    <footer class="footer-area">
+        <p> Copyright &copy; company 2019. All Right Reserved. </p>
+    </footer>
+
+    <!--======================================================
+    modernizr ,then jQuery, then Popper.js, then Bootstrap JS
+    ==========================================================-->
+    <script src="~/Plugins/js/modernizr-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="~/Plugins/js/bootstrap.min.js"></script>
+    <script src="~/Plugins/js/plugns.js"></script>
+    <script src="~/Plugins/js/scripts.js"></script>
+
+
+    @RenderSection("scripts", required: false)
+
+</body>
+
+</html>

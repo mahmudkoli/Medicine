@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,11 +19,15 @@ namespace Medicine.Entities
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        public string Phone { get; set; }
         public bool IsEmailVerified { get; set; }
         public Guid ActivationCode { get; set; }
         public string ResetPasswordCode { get; set; }
         [Required]
-        [Display(Name = "User Type")]
+        [Display(Name = "User Role")]
         public string UserRole { get; set; }
+
+        [NotMapped]
+        public string ImageUrl { get; set; }
     }
 }

@@ -27,6 +27,7 @@ namespace Medicine.Entities
         public decimal TotalPrice { get; set; }
         [Display(Name = "Unit Price")]
         public decimal UnitPrice { get; set; }
+        public int ReportCount { get; set; }
         [Required]
         [Display(Name = "Medicine Company")]
         public string CompanyId { get; set; }

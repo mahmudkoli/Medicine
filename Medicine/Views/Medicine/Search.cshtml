@@ -1,0 +1,127 @@
+﻿@model Medicine.Web.Models.MedicineSearchModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SearchLayout.cshtml";
+}
+
+@using (Html.BeginForm("Search", "Medicine", FormMethod.Get, new { @class = "" }))
+{
+    <div class="breadcrumbs" style="background-image: url('../../../Plugins/images/bg-1.jpg');">
+        <!-- Overlay -->
+        <div class="bg-overlay"></div>
+
+        <!-- navbar end -->
+        <!-- Hero content -->
+        <div class="hero-content">
+            <div class="container">
+                <div class="hero-inner">
+                    <!-- search box Wrap -->
+                    <div class="search-box-wrap">
+                        <!-- Medicine search box -->
+                        <div class="medicine-price">
+                            <h2>Search Medicine Price </h2>
+                            <div class="home-search-box">
+                                
+                                    <div class="search-input-group search-max-w-700">
+                                        <div class="full-filed">
+                                            @*<input type="text" class="form-control" placeholder="Search by medicine name">*@
+                                            @Html.TextBoxFor(model => model.SMedicineName, new { @class="form-control", @placeholder="Search by medicine name" })
+                                        </div>
+                                        <div class="submit-filed">
+                                            <input type="submit" class="form-control search-btn" value="search">
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                            <div class="popular-search-keyword">
+                                <h4>popular search :</h4>
+                                <ul class="keyword-list">
+                                    <li> <a href="#"> Adderall </a> </li>
+                                    <li> <a href="#"> Atitvan </a> </li>
+                                    <li> <a href="#"> Amlodipine </a> </li>
+                                    <li> <a href="#"> Adderall </a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Search box Wrap End -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ========== Header area end ======== -->
+    <!-- ========== Header area end ======== -->
+    <!-- Search Filter for medicice -->
+    <div class="search-page-head">
+        <div class="container">
+            <div class="search-page-inner">
+                <div class="filter-wrap">
+                    
+                        <div class="filter-inner">
+                            <div class="single-filter">
+                                <label for="">filter by Type:</label>
+                                @*<select name="cars" class="custom-select">
+                                    <option selected disabled>Choose type</option>
+                                    <option value="volvo">Tablet</option>
+                                    <option value="fiat">Syrup</option>
+                                    <option value="audi">Capsule</option>
+                                </select>*@
+                                @Html.DropDownListFor(c => c.SMedicineType, new SelectList(Model.MedicineTypes), "Choose type", new { @class = "custom-select", @onchange="submitForm(this)" })
+                            </div>
+                            <div class="single-filter">
+                                <label for="">filter by size:</label>
+                                @*<select name="cars" class="custom-select">
+                                    <option selected disabled>Choose size</option>
+                                    <option value="volvo">100 mg</option>
+                                    <option value="fiat">250 mg</option>
+                                    <option value="audi">400 mg</option>
+                                    <option value="audi">500 mg</option>
+                                </select>*@
+                                @Html.DropDownListFor(c => c.SMedicineSize, new SelectList(Model.MedicineSizes), "Choose size", new { @class = "custom-select", @onchange="submitForm(this)" })
+                            </div>
+                        </div>
+
+                    
+                </div>
+
+                <!-- add medicine button -->
+                <div class="add_button">
+                    <a href="@Url.Action("Add","Medicine",new { Area="" })"> Add an Medicine <i class="fal fa-plus-circle"></i> </a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+    <!-- search showcase -->
+    <div class="search-grid-showcase">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-head">
+                        <h3>Showing results matching keyword <span>" @Model.SMedicineName @Model.SMedicineSize @Model.SMedicineType "</span> </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                @foreach (var item in Model.Medicines)
+                {
+                    @Html.Partial("_MedicineInfo", item)
+                }
+
+            </div>
+        </div>
+    </div>
+
+
+@section scripts{
+<script>
+    function submitForm(obj) {
+        $(obj).closest('form').submit();
+    }
+    </script>    
+    
+}

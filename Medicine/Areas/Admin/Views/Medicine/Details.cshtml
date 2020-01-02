@@ -109,11 +109,11 @@
                                 @*<div class="card overflow-hidden">
                                     <input type="file" class="dropify" data-height="240" id="imageFile" name="ImageFileBase" />
                                 </div>*@
-                                <div class=" card shadow overflow-hidden">
-                                    @{ var imageUrl = string.IsNullOrWhiteSpace(Model.ImageUrl)?"":@Url.Content((Model.ImageUrl));}
-                                    <img style="height: 250px; " src="@imageUrl" alt="@Model.Name">
+                            <div class=" card shadow overflow-hidden">
+                                @{ var imageUrl = string.IsNullOrEmpty(Model.ImageUrl) ? "~/Content/Images/no-medicine.jpg" : Model.ImageUrl;}
+                                <img style="height: 250px; " src="@Url.Content(imageUrl)" alt="@Model.Name">
 
-                                </div>
+                            </div>
                             </div>
                         </div>
 

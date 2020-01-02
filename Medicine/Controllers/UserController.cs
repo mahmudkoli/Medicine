@@ -29,6 +29,7 @@ namespace Medicine.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Registration(UserModel model)
         {
+            ModelState.Remove("UserRole");
             if (ModelState.IsValid)
             {
                 //Email is already Exist 
@@ -110,7 +111,7 @@ namespace Medicine.Web.Controllers
         public ActionResult Logout()
         {
             CustomFormsAuthentication.Logout();
-            return RedirectToAction("Login", "User");
+            return RedirectToAction("Index", "Home",new { Area = "" });
         }
 
         [HttpGet]

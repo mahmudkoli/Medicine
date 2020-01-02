@@ -1,0 +1,73 @@
+﻿@using Medicine.Web.Models
+@using Medicine.Common
+
+<nav class="navbar navbar-expand-lg h-navbar">
+    <a class="navbar-brand" href="@Url.Action("Index","Home")">Logo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav_expand">
+        <span class="fal fa-bars"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="nav_expand">
+        <ul class="navbar-nav ml-auto h-navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index","Home")">Home </a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
+                    Services
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="@Url.Action("Search","Medicine")">Medicine Price</a>
+                    <a class="dropdown-item" href="#">Blood Donar</a>
+                    <a class="dropdown-item" href="#">Blood Request</a>
+
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
+                    Contribute
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="@Url.Action("Add","Medicine")">Add Medicine Price</a>
+                    <a class="dropdown-item" href="#"> Become a Blood Donar</a>
+                </div>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">Request For Blood</a>
+            </li>
+        </ul>
+
+        @if (!Request.IsAuthenticated)
+        {
+            @*<form class="form-inline my-2 my-lg-0 h-user-btn ml-lg-5">*@
+            <a href="@Url.Action("Login", "User")" class="btn btn-outline-light rounded-pill text-uppercase">login</a>
+            <a href="@Url.Action("Registration", "User")" class="btn btn-outline-light rounded-pill text-uppercase ml-3">register</a>
+            @*</form>*@
+        }
+        @if (Request.IsAuthenticated && User.IsInRole(Role.NormalUser))
+        {
+            var authUser = AuthenticatedUserModel.GetUserFromIdentity();
+
+            <div class="form-inline my-2 my-lg-0 h-user-btn ml-lg-5">
+                <div class=" user-account dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                        Hi, @authUser.Name <i class="fal fa-user-circle"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="@Url.Action("Profile","User")">Profile</a>
+                        @using (Html.BeginForm("Logout", "User", FormMethod.Post, new { id = "logoutForm" }))
+                        {
+                            <a href="javascript:document.getElementById('logoutForm').submit()" class="dropdown-item" title="Logout">Logout</a>
+                        }
+                        @*<a class="dropdown-item" href="#"> Logout</a>*@
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</nav>

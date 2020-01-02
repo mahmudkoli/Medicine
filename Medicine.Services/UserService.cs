@@ -26,10 +26,11 @@ namespace Medicine.Services
                 {
                     Name = user.Name,
                     Email = user.Email,
+                    Phone = user.Phone,
                     Password = CustomCrypto.Hash(user.Password),
                     IsEmailVerified = true,
                     ActivationCode = Guid.NewGuid(),
-                    UserRole = user.UserRole
+                    UserRole = Role.NormalUser
                 };
                 _userUnitOfWork.UserRepository.Add(newUser);
 
@@ -37,16 +38,6 @@ namespace Medicine.Services
                 //CustomEmail.SendVerificationLinkEmail(newUser.Email, newUser.ActivationCode.ToString(), DefaultValue.EmailTypes.VerifyAccount);
 
                 var isSaved = _userUnitOfWork.Save();
-
-                ////--------Save with Patient---------
-                //if (newUser.UserRoleId == (int)CustomEnum.UserType.Patient)
-                //{
-                //    var newPatient = new Patient()
-                //    {
-                //        UserId = newUser.Id
-                //    };
-                //    _patientService.Add(newPatient);
-                //}
 
                 return isSaved;
             }

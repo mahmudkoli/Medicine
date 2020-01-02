@@ -67,6 +67,10 @@
     <Compile Include="Migrations\201912251359302_medicineentityupdate.Designer.cs">
       <DependentUpon>201912251359302_medicineentityupdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001021958488_updateEntity.cs" />
+    <Compile Include="Migrations\202001021958488_updateEntity.Designer.cs">
+      <DependentUpon>202001021958488_updateEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserRepository.cs" />
@@ -95,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912251359302_medicineentityupdate.resx">
       <DependentUpon>201912251359302_medicineentityupdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001021958488_updateEntity.resx">
+      <DependentUpon>202001021958488_updateEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -72,6 +72,8 @@ body {
 .h-navbar {
     z-index: 999;
     padding: 30px 70px;
+    background-color: #0090DA;
+    height: 100px;
 }
 
 .h-navbar .navbar-brand {
@@ -97,7 +99,9 @@ body {
 
 
 /* Hero Content */
-
+.breadcrumbs{
+    position: relative;
+}
 .hero-content {
     position: relative;
     z-index: 9;
@@ -105,8 +109,11 @@ body {
 
 .search-box-wrap {
     padding: 120px 0 80px 0;
+    text-align: center;
 }
-
+.medicine-price{
+    text-align: center;
+}
 .search-box-wrap h2 {
     font-size: 36px;
     font-weight: 400;
@@ -117,10 +124,10 @@ body {
 }
 
 .search-box-wrap p {
-    color: #fff;
-    max-width: 700px;
+	color: #fff;
+	max-width: 700px;
+	margin: auto;
 }
-
 .search-input-group {
     display: flex;
     justify-content: space-between;
@@ -829,7 +836,8 @@ body {
 .dropdown-menu {
     padding: 0;
     overflow: hidden;
-    margin-top: 20px;
+    margin-top: 37px;
+    border-radius: 0;
 }
 
 .dropdown-item {
@@ -898,4 +906,11 @@ body {
 
 .modal-inner ::placeholder {
     color: #ddd
+}
+.user-account a.nav-link{
+    color: #fff;
+    font-size: 15px;
+}
+.user-account .dropdown-menu {
+	margin-top: 29px;
 }

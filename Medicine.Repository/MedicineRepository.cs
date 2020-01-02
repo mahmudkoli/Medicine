@@ -17,5 +17,13 @@ namespace Medicine.Repository
         {
             _context = context;
         }
+
+        public IEnumerable<MedicineInfo> GetAll(string medicineName, string medicineSize, string medicineType)
+        {
+            return _context.MedicineInfos.Where(c => !c.IsDeleted && 
+            (string.IsNullOrEmpty(medicineName) || c.Name.Contains(medicineName)) && 
+            (string.IsNullOrEmpty(medicineSize) || c.MedicineSize.ToLower() == medicineSize.ToLower()) && 
+            (string.IsNullOrEmpty(medicineType) || c.MedicineType.ToLower() == medicineType.ToLower())).OrderByDescending(x => x.CreatedAt);
+        }
     }
 }

@@ -1,10 +1,9 @@
 ﻿@using Medicine.Common
-@model Medicine.Web.Models.LoginUserModel
+@model Medicine.Web.Models.UserModel
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Registration";
     Layout = null;
 }
-
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -42,20 +41,26 @@
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100 p-5">
-
-
-
-                @using (Html.BeginForm("Login", "User", new { @class = "" }))
+                @using (Html.BeginForm("Registration", "User", new { @class = "" }))
                 {
-                    <div class="login100-form validate-form">
-                        @Html.AntiForgeryToken()
+                    @Html.AntiForgeryToken()
 
-                        <span class="login100-form-title">
-                            Login to @DefaultValue.CompanyShortName!
-                        </span>
+                    <div class="login100-form validate-form">
+                        <span class="login100-form-title"> Member Register </span>
 
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+
+                        <div class="wrap-input100 validate-input">
+                            @*<input class="" type="text" name="email" placeholder="Email">*@
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "input100", @placeholder = "Full Name" } })
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </span>
+
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
 
                         <div class="wrap-input100 validate-input">
                             @*<input class="" type="text" name="email" placeholder="Email">*@
@@ -69,6 +74,17 @@
                         @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
 
                         <div class="wrap-input100 validate-input">
+                            @*<input class="" type="text" name="email" placeholder="Email">*@
+                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "input100", @placeholder = "Phone" } })
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                            </span>
+
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+
+                        <div class="wrap-input100 validate-input">
                             @*<input class="input100" type="password" name="pass" placeholder="Password">*@
                             @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input100", @placeholder = "Password" } })
                             <span class="focus-input100"></span>
@@ -79,27 +95,25 @@
                         </div>
                         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
 
-                        <div class="container-login100-form-btn">
-                            @*<a href="index-2.html" class="login100-form-btn btn-primary">
-                                    Login
-                                </a>*@
-                            <input class="login100-form-btn btn-primary" type="submit" value="Login">
-                        </div>
-
-                        <div class="text-center pt-2">
-                            <span class="txt1">
-                                Forgot
+                        <div class="wrap-input100 validate-input">
+                            @*<input class="input100" type="password" name="pass" placeholder="Password">*@
+                            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "input100", @placeholder = "Confirm Password" } })
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-lock" aria-hidden="true"></i>
                             </span>
-                            <a class="txt2" href="forgot.html">
-                                Username / Password?
-                            </a>
-                        </div>
 
-                        <div class="text-center pt-1">
-                            <a class="txt2" href="@Url.Action("Registration","User")">
-                                Create your Account
-                                <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                            </a>
+                        </div>
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+
+
+
+                        <div class="container-login100-form-btn">
+                            <button type="submit" class="login100-form-btn btn-primary"> Create </button>
+                        </div>
+                        <div class="text-center pt-2">
+                            <span class="txt1"> Already you have an account? </span>
+                            <a class="txt2" href="@Url.Action("Login", "User")"> login here </a>
                         </div>
                     </div>
                 }
@@ -114,17 +128,7 @@
     <script src="~/Plugins/Admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
     @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        $(document).ready(function () {
-            $('input[type="checkbox"]').change(function () {
-                if ($(this).is(':checked')) {
-                    $(this).val('true');
-                } else {
-                    $(this).val('false');
-                }
-            });
-        });
-    </script>
 </body>
 
 </html>
+

@@ -1,5 +1,86 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
-    <h2>Home Page</h2>
+<!-- search box Wrap -->
+<div class="search-box-wrap text-center">
+    <!-- Medicine search box -->
+    <div class="medicine-price show">
+        <h2>Search Medicine Price</h2>
+        <div class="home-search-box">
+            @using (Html.BeginForm("Search", "Medicine", FormMethod.Get, new { @class = "" }))
+            {
+                <div class="search-input-group search-max-w-700">
+                    <div class="full-filed">
+                        <input type="text" class="form-control" name="SMedicineName" placeholder="Search by medicine name">
+                    </div>
+                    <div class="submit-filed">
+                        <input type="submit" class="form-control search-btn" value="search">
+                    </div>
+                </div>
+            }
+            </div>
+        <div class="popular-search-keyword">
+            <h4>popular search :</h4>
+            <ul class="keyword-list">
+                <li> <a href="#"> Adderall </a> </li>
+                <li> <a href="#"> Atitvan </a> </li>
+                <li> <a href="#"> Amlodipine </a> </li>
+                <li> <a href="#"> Adderall </a> </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <!-- Ambulnce search box -->
+    <div class="donar-search ">
+        <h2>Search Blood Donar In Your Area</h2>
+        <div class="home-search-box ">
+
+            @using (Html.BeginForm("Search", "Blood", FormMethod.Get, new { @class = "" }))
+            {
+                <div class="search-input-group search-max-w-700 ">
+                    <div class="full-filed ">
+                        <input type="text" class="form-control " placeholder="Search by bloog group ">
+                    </div>
+                    <div class="submit-filed ">
+                        <input type="submit" class="form-control search-btn " value="search ">
+                    </div>
+                </div>
+            }
+            </div>
+        <div class="popular-search-keyword ">
+            <h4>popular search :</h4>
+            <ul class="keyword-list ">
+                <li> <a href="# "> B+ </a> </li>
+                <li> <a href="# "> A+ </a> </li>
+                <li> <a href="# "> AB+ </a> </li>
+                <li> <a href="# "> O+ </a> </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- Search box Wrap End -->
+<!-- search category item -->
+<div class="search-catagories ">
+    <!-- section Title -->
+    <div class="sction-title-card ">
+        <h3>What Are You Looking For?</h3>
+    </div>
+
+    <!-- category item-->
+    <div class="category-item bg-blue ">
+        <a href="# " class="btn-medicine "> <i class="fal fa-tag "></i> Medicine price </a>
+    </div>
+
+    <!-- category item-->
+    <div class="category-item bg-dark-red ">
+        <a href="# " class="btn-b-donar "> <i class="fal fa-users "></i> Blood Donar </a>
+    </div>
+
+</div>
+<!-- search category item end -->
