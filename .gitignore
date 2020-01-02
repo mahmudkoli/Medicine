@@ -354,3 +354,5 @@ MigrationBackup/
 /Medicine/ConnectionStrings.config
 /Medicine/Uploads/
 /Medicine/Properties/PublishProfiles/*.pubxml
+Medicine.Authentication/
+
