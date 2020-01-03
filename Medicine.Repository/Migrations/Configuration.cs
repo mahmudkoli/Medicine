@@ -21,6 +21,7 @@ namespace Medicine.Repository.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
+            // user
             context.Users.AddOrUpdate(x => x.Email,
                 new User()
                 {
@@ -32,10 +33,49 @@ namespace Medicine.Repository.Migrations
                 }
                 );
 
-            context.Companies.AddOrUpdate(x => x.Name,
-                new Company() { Name = "Square Limited" },
-                new Company() { Name = "Beximco Limited" },
-                new Company() { Name = "Pharmaceutical Limited" });
+            // comapny
+            context.Users.AddOrUpdate(x => x.Email,
+                new User()
+                {
+                    Name = "Square Limited",
+                    Email = "square@gmail.com",
+                    Address = "Dhaka",
+                    Password = CustomCrypto.Hash(DefaultValue.UserPassword),
+                    IsEmailVerified = true,
+                    UserRole = Role.Company
+                },
+                new User()
+                {
+                    Name = "Beximco Limited",
+                    Email = "beximco@gmail.com",
+                    Address = "Dhaka",
+                    Password = CustomCrypto.Hash(DefaultValue.UserPassword),
+                    IsEmailVerified = true,
+                    UserRole = Role.Company
+                },
+                new User()
+                {
+                    Name = "Pharmaceutical Limited",
+                    Email = "pharma@gmail.com",
+                    Address = "Dhaka",
+                    Password = CustomCrypto.Hash(DefaultValue.UserPassword),
+                    IsEmailVerified = true,
+                    UserRole = Role.Company
+                }
+                );
+
+            // pharmacy
+            context.Users.AddOrUpdate(x => x.Email,
+                new User()
+                {
+                    Name = "Ronoda Pharmacy",
+                    Email = "ronoda@gmail.com",
+                    Address = "Dhaka",
+                    Password = CustomCrypto.Hash(DefaultValue.UserPassword),
+                    IsEmailVerified = true,
+                    UserRole = Role.Pharmacy
+                }
+                );
         }
     }
 }

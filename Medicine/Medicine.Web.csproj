@@ -129,8 +129,10 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MedicineController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MedicineReportController.cs" />
     <Compile Include="Areas\Admin\Model\CompanyModel.cs" />
     <Compile Include="Areas\Admin\Model\MedicineModel.cs" />
+    <Compile Include="Areas\Admin\Model\MedicineReportModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MedicineController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -468,6 +470,9 @@
     <Content Include="Areas\Admin\Views\Medicine\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Medicine\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Medicine\Pending.cshtml" />
+    <Content Include="Areas\Admin\Views\MedicineReport\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\MedicineReport\Pending.cshtml" />
+    <Content Include="Areas\Admin\Views\MedicineReport\Details.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Medicine.Web.Areas.Admin.Model
 {
-    public class CompanyModel : Company
+    public class CompanyModel : User
     {
         
     }

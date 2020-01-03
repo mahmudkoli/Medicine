@@ -47,7 +47,7 @@
         var routeValues = ViewContext.RouteData.Values;
         var currentAction = routeValues["Action"].ToString();
         var currentController = routeValues["Controller"].ToString();
-        var userImageUrl = string.IsNullOrEmpty(authUser.ImageUrl) ?  "~/Content/Images/no-image.jpg" : authUser.ImageUrl;
+        var userImageUrl = string.IsNullOrEmpty(authUser.ImageUrl) ? "~/Content/Images/no-image.jpg" : authUser.ImageUrl;
     }
 
 
@@ -68,25 +68,28 @@
                                 <span class="side-menu__label">Dashboard</span>
                             </a>
                         </li>
-                        <li class="slide">
-                            <a class="side-menu__item" data-toggle="slide" href="#">
-                                <i class="side-menu__icon fe fe-grid"></i>
-                                <span class="side-menu__label">Medicine</span>
-                                <i class="angle fa fa-angle-right"></i>
-                            </a>
+                        @if (User.IsInRole(Role.Admin))
+                        {
+                            <li class="slide">
+                                <a class="side-menu__item" data-toggle="slide" href="#">
+                                    <i class="side-menu__icon fe fe-grid"></i>
+                                    <span class="side-menu__label">Medicine</span>
+                                    <i class="angle fa fa-angle-right"></i>
+                                </a>
 
-                            <ul class="slide-menu">
-                                <li>
-                                    <a href="@Url.Action("Add","Medicine", new { Area = "Admin" })" class="slide-item">Add Medicine</a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Action("Pending","Medicine", new { Area = "Admin" })" class="slide-item">Pending Apporval</a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Action("Index","Medicine", new { Area = "Admin" })" class="slide-item">View All Medicine</a>
-                                </li>
-                            </ul>
-                        </li>
+                                <ul class="slide-menu">
+                                    <li>
+                                        <a href="@Url.Action("Add","Medicine", new { Area = "Admin" })" class="slide-item">Add Medicine</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Pending","Medicine", new { Area = "Admin" })" class="slide-item">Pending Apporval</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index","Medicine", new { Area = "Admin" })" class="slide-item">View All Medicine</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
                         <li class="slide">
                             <a class="side-menu__item" data-toggle="slide" href="#">
                                 <i class="side-menu__icon fe fe-grid"></i>
@@ -96,48 +99,51 @@
 
                             <ul class="slide-menu">
                                 <li>
-                                    <a href="#" class="slide-item"> Pending Complain</a>
+                                    <a href="@Url.Action("Pending","MedicineReport", new { Area = "Admin" })" class="slide-item"> Pending Complain</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="slide-item"> All Complain</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="slide">
-                            <a class="side-menu__item" href="#">
-                                <i class="side-menu__icon fe fe-grid"></i>
-                                <span class="side-menu__label">Recent Blood Request </span>
-                            </a>
-                        </li>
-
-                        <li class="slide">
-                            <a class="side-menu__item" href="#">
-                                <i class="side-menu__icon fe fe-grid"></i>
-                                <span class="side-menu__label"> Blood Donar Contract </span>
-                            </a>
-                        </li>
-
-
-                        <li class="slide">
-                            <a class="side-menu__item" data-toggle="slide" href="#">
-                                <i class="side-menu__icon fe fe-grid"></i>
-                                <span class="side-menu__label"> Account Settings</span>
-                                <i class="angle fa fa-angle-right"></i>
-                            </a>
-
-                            <ul class="slide-menu">
-
-                                <li>
-                                    <a href="user-profile.html" class="slide-item"> Profile</a>
-                                </li>
-                                <li>
-                                    <a href="email-inbox.html" class="slide-item"> Message</a>
+                                    <a href="@Url.Action("Index","MedicineReport", new { Area = "Admin" })" class="slide-item"> All Complain</a>
                                 </li>
                             </ul>
                         </li>
 
+                        @if (User.IsInRole(Role.Admin))
+                        {
+                            <li class="slide">
+                                <a class="side-menu__item" href="#">
+                                    <i class="side-menu__icon fe fe-grid"></i>
+                                    <span class="side-menu__label">Recent Blood Request </span>
+                                </a>
+                            </li>
 
-                    </ul>
+                            <li class="slide">
+                                <a class="side-menu__item" href="#">
+                                    <i class="side-menu__icon fe fe-grid"></i>
+                                    <span class="side-menu__label"> Blood Donar Contract </span>
+                                </a>
+                            </li>
+                        }
+
+                            <li class="slide">
+                                <a class="side-menu__item" data-toggle="slide" href="#">
+                                    <i class="side-menu__icon fe fe-grid"></i>
+                                    <span class="side-menu__label"> Account Settings</span>
+                                    <i class="angle fa fa-angle-right"></i>
+                                </a>
+
+                                <ul class="slide-menu">
+
+                                    <li>
+                                        <a href="user-profile.html" class="slide-item"> Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="email-inbox.html" class="slide-item"> Message</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+                        </ul>
                 </div>
             </aside>
             <!-- Sidebar menu-->

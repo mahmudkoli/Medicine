@@ -21,7 +21,7 @@ namespace Medicine.Web.Areas.Admin.Model
         [Display(Name = "Image")]
         public HttpPostedFileBase ImageFileBase { get; set; }
 
-        public IEnumerable<Company> Companies { get; set; }
+        public IEnumerable<User> Companies { get; set; }
         public IEnumerable<string> MedicineTypes { get; set; }
         public IEnumerable<string> MedicineSizes { get; set; }
 
@@ -48,6 +48,7 @@ namespace Medicine.Web.Areas.Admin.Model
                 this.CompanyId = existingEntity.CompanyId;
                 this.Company = existingEntity.Company;
                 this.ImageUrl = existingEntity.ImageUrl;
+                this.Status = existingEntity.Status;
             }
         }
 

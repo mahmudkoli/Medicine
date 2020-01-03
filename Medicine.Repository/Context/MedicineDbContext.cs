@@ -16,6 +16,6 @@ namespace Medicine.Repository.Context
 
         public DbSet<User> Users { get; set; }
         public DbSet<MedicineInfo> MedicineInfos { get; set; }
-        public DbSet<Company> Companies { get; set; }
+        public DbSet<MedicineReport> MedicineReports { get; set; }
     }
 }

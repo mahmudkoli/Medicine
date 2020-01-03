@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Medicine.Web.Areas.Admin.Controllers
 {
-    [Authorize(Roles = Role.Admin)]
+    [Authorize]
     public class HomeController : Controller
     {
         // GET: Admin/Home

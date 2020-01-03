@@ -50,7 +50,7 @@ namespace Medicine.Services
 
         public IEnumerable<User> GetAll()
         {
-            return _userUnitOfWork.UserRepository.GetAll();
+            return _userUnitOfWork.UserRepository.GetAll().Where(x => x.UserRole != Role.Company && x.UserRole != Role.Pharmacy);
         }
 
         public User GetByEmail(string email)

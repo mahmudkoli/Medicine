@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace Medicine.Repository
 {
-    public class CompanyUnitOfWork : IDisposable
+    public class MedicineReportUnitOfWork : IDisposable
     {
         private MedicineDbContext _context;
-        private CompanyRepository _companyRepository;
-        public CompanyUnitOfWork(MedicineDbContext context)
+        private MedicineReportRepository _medicineReportRepository;
+        public MedicineReportUnitOfWork(MedicineDbContext context)
         {
             _context = context;
-            _companyRepository = new CompanyRepository(_context);
+            _medicineReportRepository = new MedicineReportRepository(_context);
         }
 
-        public CompanyRepository ComapanyRepository => _companyRepository;
+        public MedicineReportRepository MedicineReportRepository => _medicineReportRepository;
 
         public bool Save()
         {

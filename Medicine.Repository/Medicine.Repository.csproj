@@ -50,7 +50,11 @@
   <ItemGroup>
     <Compile Include="Base\IRepository.cs" />
     <Compile Include="Base\Repository.cs" />
+    <Compile Include="MedicineReportRepository.cs" />
+    <Compile Include="PharmacyRepository.cs" />
     <Compile Include="CompanyRepository.cs" />
+    <Compile Include="MedicineReportUnitOfWork.cs" />
+    <Compile Include="PharmacyUnitOfWork.cs" />
     <Compile Include="CompanyUnitOfWork.cs" />
     <Compile Include="Context\MedicineDbContext.cs" />
     <Compile Include="MedicineRepository.cs" />
@@ -70,6 +74,18 @@
     <Compile Include="Migrations\202001021958488_updateEntity.cs" />
     <Compile Include="Migrations\202001021958488_updateEntity.Designer.cs">
       <DependentUpon>202001021958488_updateEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001031727139_entityUpdate.cs" />
+    <Compile Include="Migrations\202001031727139_entityUpdate.Designer.cs">
+      <DependentUpon>202001031727139_entityUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001031753389_entityUpdates.cs" />
+    <Compile Include="Migrations\202001031753389_entityUpdates.Designer.cs">
+      <DependentUpon>202001031753389_entityUpdates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001031803338_entityUpdatess.cs" />
+    <Compile Include="Migrations\202001031803338_entityUpdatess.Designer.cs">
+      <DependentUpon>202001031803338_entityUpdatess.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,6 +118,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001021958488_updateEntity.resx">
       <DependentUpon>202001021958488_updateEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001031727139_entityUpdate.resx">
+      <DependentUpon>202001031727139_entityUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001031753389_entityUpdates.resx">
+      <DependentUpon>202001031753389_entityUpdates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001031803338_entityUpdatess.resx">
+      <DependentUpon>202001031803338_entityUpdatess.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

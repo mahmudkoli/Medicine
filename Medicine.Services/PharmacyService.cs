@@ -10,17 +10,17 @@ using System.Threading.Tasks;
 
 namespace Medicine.Services
 {
-    public class CompanyService
+    public class PharmacyService
     {
-        private CompanyUnitOfWork _companyUnitOfWork;
-        public CompanyService()
+        private PharmacyUnitOfWork _companyUnitOfWork;
+        public PharmacyService()
         {
-            _companyUnitOfWork = new CompanyUnitOfWork(new MedicineDbContext());
+            _companyUnitOfWork = new PharmacyUnitOfWork(new MedicineDbContext());
         }
 
         public IEnumerable<User> GetAll()
         {
-            return _companyUnitOfWork.ComapanyRepository.GetAll().Where(x => x.UserRole == Role.Company);
+            return _companyUnitOfWork.PharmacyRepository.GetAll().Where(x => x.UserRole == Role.Pharmacy);
         }
     }
 }

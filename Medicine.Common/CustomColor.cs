@@ -25,5 +25,23 @@ namespace Medicine.Common
                     return "";
             }
         }
+        public static string BadgeColor(EnumMedicineReportStatus val)
+        {
+            switch (val)
+            {
+                case EnumMedicineReportStatus.Done:
+                case EnumMedicineReportStatus.ToPharmacy:
+                case EnumMedicineReportStatus.ToComapny:
+                    return "badge-success";
+                case EnumMedicineReportStatus.Rejected:
+                    return "badge-error";
+                case EnumMedicineReportStatus.Pending:
+                    return "badge-warning";
+                case EnumMedicineReportStatus.Draft:
+                    return "";
+                default:
+                    return "";
+            }
+        }
     }
 }

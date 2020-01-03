@@ -21,6 +21,8 @@ namespace Medicine.Common
     public static class Role
     {
         public const string Admin = "Admin";
+        public const string Company = "Company";
+        public const string Pharmacy = "Pharmacy";
         public const string NormalUser = "NormalUser";
     }
     public static class EmailType

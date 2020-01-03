@@ -13,4 +13,13 @@ namespace Medicine.Common
         Approved = 3,
         Banned = 4
     }
+    public enum EnumMedicineReportStatus
+    {
+        Draft = 1,
+        Pending = 2,
+        Rejected = 3,
+        ToComapny = 4,
+        ToPharmacy = 5,
+        Done = 6
+    }
 }

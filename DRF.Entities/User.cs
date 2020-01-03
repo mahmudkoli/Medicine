@@ -20,14 +20,12 @@ namespace Medicine.Entities
         [DataType(DataType.Password)]
         public string Password { get; set; }
         public string Phone { get; set; }
+        public string Address { get; set; }
         public bool IsEmailVerified { get; set; }
         public Guid ActivationCode { get; set; }
         public string ResetPasswordCode { get; set; }
         [Required]
-        [Display(Name = "User Role")]
         public string UserRole { get; set; }
-
-        [NotMapped]
         public string ImageUrl { get; set; }
     }
 }

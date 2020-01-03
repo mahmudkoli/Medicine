@@ -31,7 +31,7 @@ namespace Medicine.Entities
         [Required]
         [Display(Name = "Medicine Company")]
         public string CompanyId { get; set; }
-        public virtual Company Company { get; set; }
+        public virtual User Company { get; set; }
         
 
         [Display(Name = "Contributor")]

@@ -87,7 +87,7 @@ namespace Medicine.Web.Controllers
 
                 if (isAuthUser != null)
                 {
-                    if (isAuthUser.UserRole == Role.Admin)
+                    if (isAuthUser.UserRole == Role.Admin || isAuthUser.UserRole == Role.Company || isAuthUser.UserRole == Role.Pharmacy)
                     {
                         return RedirectToAction("Index", "Home", new {area = "Admin"});
                     }

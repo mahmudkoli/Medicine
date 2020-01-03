@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Medicine.Repository
 {
-    public class CompanyRepository : Repository<User>
+    public class PharmacyRepository : Repository<User>
     {
         private MedicineDbContext _context;
 
-        public CompanyRepository(MedicineDbContext context) : base(context)
+        public PharmacyRepository(MedicineDbContext context) : base(context)
         {
             _context = context;
         }
