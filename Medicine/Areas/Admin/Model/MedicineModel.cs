@@ -59,6 +59,12 @@ namespace Medicine.Web.Areas.Admin.Model
             return _medicineService.AddByAdmin(this);
         }
 
+
+        public void ChangeStatus(string id, EnumMedicineStatus status)
+        {
+            _medicineService.ChangeStatus(id, status);
+        }
+
         public string Update()
         {
             this.ImageUrl = CustomFile.SaveImageFile(this.ImageFileBase, this.Name, this.Id, "Medicine");

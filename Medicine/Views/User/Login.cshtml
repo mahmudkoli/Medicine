@@ -45,7 +45,7 @@
 
 
 
-                @using (Html.BeginForm("Login", "User", new { @class = "" }))
+                @using (Html.BeginForm("Login", "User", new { ReturnUrl = ViewBag.ReturnUrl }))
                 {
                     <div class="login100-form validate-form">
                         @Html.AntiForgeryToken()

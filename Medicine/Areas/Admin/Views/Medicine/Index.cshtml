@@ -59,7 +59,8 @@
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" href="@Url.Action("Details","Medicine", new { id = item.Id })">View</a>
                                                 <a class="dropdown-item" href="@Url.Action("Edit","Medicine", new { id = item.Id })">Edit</a>
-                                                <a class="dropdown-item" href="#">Banned</a>
+                                                <a class="dropdown-item" href="@Url.Action("ChangeStatus", "Medicine", new { id = item.Id, status = EnumMedicineStatus.Approved, Area = "Admin" })">Approved</a>
+                                                <a class="dropdown-item" href="@Url.Action("ChangeStatus", "Medicine", new { id = item.Id, status = EnumMedicineStatus.Banned, Area = "Admin" })">Banned</a>
                                             </div>
                                         </div>
                                     </td>

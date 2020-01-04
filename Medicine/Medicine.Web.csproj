@@ -142,6 +142,7 @@
     <Compile Include="Models\AuthenticatedUserModel.cs" />
     <Compile Include="Models\LoginUserModel.cs" />
     <Compile Include="Models\MedicineModel.cs" />
+    <Compile Include="Models\MedicineReportModel.cs" />
     <Compile Include="Models\MedicineSearchModel.cs" />
     <Compile Include="Models\ResetPasswordModel.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -508,12 +509,15 @@
     <Content Include="Views\Medicine\Add.cshtml" />
     <Content Include="Views\Medicine\Report.cshtml" />
     <Content Include="Views\Shared\_TopNavbarPartial.cshtml" />
+    <Content Include="Views\Medicine\ReportSuccess.cshtml" />
+    <Content Include="Views\Medicine\AddSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Admin\" />
     <Folder Include="Areas\Admin\Views\Users\" />
+    <Folder Include="Uploads\Documents\MedicineReport\" />
     <Folder Include="Uploads\Images\Medicine\" />
     <Folder Include="Views\Users\" />
   </ItemGroup>

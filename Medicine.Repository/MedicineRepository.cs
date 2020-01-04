@@ -1,4 +1,5 @@
-﻿using Medicine.Entities;
+﻿using Medicine.Common;
+using Medicine.Entities;
 using Medicine.Repository.Base;
 using Medicine.Repository.Context;
 using System;
@@ -24,6 +25,14 @@ namespace Medicine.Repository
             (string.IsNullOrEmpty(medicineName) || c.Name.Contains(medicineName)) && 
             (string.IsNullOrEmpty(medicineSize) || c.MedicineSize.ToLower() == medicineSize.ToLower()) && 
             (string.IsNullOrEmpty(medicineType) || c.MedicineType.ToLower() == medicineType.ToLower())).OrderByDescending(x => x.CreatedAt);
+        }
+
+        public void ChangeStatus(string id, EnumMedicineStatus status)
+        {
+            var entity = _context.MedicineInfos.FirstOrDefault(x => x.Id == id);
+            entity.Status = status;
+            entity.UpdatedAt = DateTime.Now;
+            _context.SaveChanges();
         }
     }
 }

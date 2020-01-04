@@ -1,4 +1,5 @@
 ﻿@model Medicine.Web.Models.MedicineModel
+@using Medicine.Common
 
 @{
     ViewBag.Title = "Details";
@@ -54,83 +55,83 @@
 }
 
 
-    <!-- search showcase -->
-    <div class="search-grid-showcase">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-head">
-                        <h3>@Model.Name (@Model.MedicineType) </h3>
-                    </div>
+<!-- search showcase -->
+<div class="search-grid-showcase">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-head">
+                    <h3>@Model.Name (@Model.MedicineType) </h3>
                 </div>
-            </div>
-            <div class="row">
-                <!-- single card -->
-                <div class="col-lg-8">
-                    <div class="search-card approved-card">
-                        <div class="card-head">
-                            <div class="card-head-left">
-                                <h3 class="card-title">@Model.Name @Model.MedicineSize (@Model.MedicineType) </h3>
-                                <span class="card-info">@Model.MedicineType</span>
-                                <span class="card-info">@Model.Company.Name</span>
-                                <h3 class="card-sub-title">Price:</h3>
-                                <h4 class="card-price">BDT @Model.TotalPrice (Unit Price : BDT @Model.UnitPrice)</h4>
-                                <span class="card-date">Last Update: @((Model.UpdatedAt ?? Model.CreatedAt)?.ToString("dd MMM, yyyy") ?? "") </span>
-                            </div>
-                            <div class="card-head-right">
-                                <span class="card-verifyed"><i class="fas fa-badge-check"></i> @Model.Status.ToString()</span>
-                            </div>
-                        </div>
-
-                        <div class="card-content">
-                            <div class="card-img">
-                                @{ var imageUrl = string.IsNullOrEmpty(Model.ImageUrl) ?  "~/Content/Images/no-medicine.jpg" : Model.ImageUrl;}
-                                <img src="@Url.Content(imageUrl)" alt="@Model.Name">
-                            </div>
-                            <p>
-                                @Model.Details
-
-
-                            </p>
-                        </div>
-                        <div class="card-fot">
-                            <div class="card-footer-left">
-
-                            </div>
-                            <div class="card-footer-right">
-                                <a href="@Url.Action("Report","Medicine", new { id = Model.Id })" class="card-helper"> <i class="fal fa-flag-alt"></i> Report (@Model.ReportCount)</a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sidebar -->
-                <div class="col-lg-4">
-                    <div class="sidebar">
-                        <!-- Blood Donar -->
-                        <div class="contribute-btn">
-                            <a href="@Url.Action("Add","Medicine")"> <span> Add an Medicine </span> <i class="fal fa-plus-circle"></i> </a>
-                        </div>
-
-                        <!-- Recent Blood Request -->
-
-                        <div class="recent-blood-request">
-                            <h3>Recent Blood Request</h3>
-
-                            <div class="b-request-info">
-                                <h4> <span> Blood Group </span> O positive(+)</h4>
-                                <h4> <span> Amount </span> 1 Unit(s)/Bag(s)</h4>
-                                <h4> <span> Donation Date </span> 10/11/2019</h4>
-                                <h4> <span> Patient's Location </span> Mirpur Pallabi Dhaka 1216</h4>
-                                <h4> <span> District </span> Dhaka</h4>
-                                <h4> <span> Number </span> 01995131831</h4>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
+        <div class="row">
+            <!-- single card -->
+            <div class="col-lg-8">
+                <div class="search-card  @CustomColor.CardColor(Model.Status)">
+                    <div class="card-head">
+                        <div class="card-head-left">
+                            <h3 class="card-title">@Model.Name @Model.MedicineSize (@Model.MedicineType) </h3>
+                            <span class="card-info">@Model.MedicineType</span>
+                            <span class="card-info">@Model.Company.Name</span>
+                            <h3 class="card-sub-title">Price:</h3>
+                            <h4 class="card-price">BDT @Model.TotalPrice (Unit Price : BDT @Model.UnitPrice)</h4>
+                            <span class="card-date">Last Update: @((Model.UpdatedAt ?? Model.CreatedAt)?.ToString("dd MMM, yyyy") ?? "") </span>
+                        </div>
+                        <div class="card-head-right">
+                            <span class="card-verifyed"><i class="fas fa-badge-check"></i> @Model.Status.ToString()</span>
+                        </div>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="card-img">
+                            @{ var imageUrl = string.IsNullOrEmpty(Model.ImageUrl) ? "~/Content/Images/no-medicine.jpg" : Model.ImageUrl;}
+                            <img src="@Url.Content(imageUrl)" alt="@Model.Name">
+                        </div>
+                        <p>
+                            @Model.Details
+
+
+                        </p>
+                    </div>
+                    <div class="card-fot">
+                        <div class="card-footer-left">
+
+                        </div>
+                        <div class="card-footer-right">
+                            <a href="@Url.Action("Report","Medicine", new { id = Model.Id })" class="card-helper"> <i class="fal fa-flag-alt"></i> Report (@Model.ReportCount)</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="sidebar">
+                    <!-- Blood Donar -->
+                    <div class="contribute-btn">
+                        <a href="@Url.Action("Add","Medicine")"> <span> Add an Medicine </span> <i class="fal fa-plus-circle"></i> </a>
+                    </div>
+
+                    <!-- Recent Blood Request -->
+
+                    <div class="recent-blood-request">
+                        <h3>Recent Blood Request</h3>
+
+                        <div class="b-request-info">
+                            <h4> <span> Blood Group </span> O positive(+)</h4>
+                            <h4> <span> Amount </span> 1 Unit(s)/Bag(s)</h4>
+                            <h4> <span> Donation Date </span> 10/11/2019</h4>
+                            <h4> <span> Patient's Location </span> Mirpur Pallabi Dhaka 1216</h4>
+                            <h4> <span> District </span> Dhaka</h4>
+                            <h4> <span> Number </span> 01995131831</h4>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
+</div>

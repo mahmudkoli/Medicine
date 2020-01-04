@@ -1,8 +1,172 @@
-﻿
+﻿@model Medicine.Web.Models.MedicineModel
 @{
     ViewBag.Title = "Add";
     Layout = "~/Views/Shared/_SearchLayout.cshtml";
 }
 
-<h2>Add</h2>
+<!-- form Uploads -->
+<link href="~/Plugins/Admin/assets/plugins/fileuploads/css/dropify.css" rel="stylesheet" type="text/css" />
 
+<div class="breadcrumbs" style="background-image: url('../../../Plugins/images/bg-1.jpg');">
+    <!-- Overlay -->
+    <div class="bg-overlay"></div>
+
+    <!-- navbar end -->
+    <!-- Hero content -->
+    <div class="hero-content">
+        <div class="container">
+            <div class="hero-inner">
+                <!-- search box Wrap -->
+                <div class="search-box-wrap">
+                    <!-- Medicine search box -->
+                    <div class="medicine-price">
+                        <h2>Medicine information </h2>
+                        <p>Please, Input the information Very carefully with 100% Right information.</p>
+                    </div>
+                </div>
+                <!-- Search box Wrap End -->
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ========== Header area end ======== -->
+<!-- search showcase -->
+<div class="search-grid-showcase">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-head">
+                    <p>Please, Input the information Very carefully with 100% Right information.</p>
+                </div>
+            </div>
+        </div>
+        @using (Html.BeginForm("Add", "Medicine", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            @Html.AntiForgeryToken()
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="user-information">
+                        <form action="" class="mt-5">
+
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="user-form-full">
+                                        <label for="m-name">Medicine Name</label>
+                                        @*<input type="text" class="form-control" placeholder="Napa" id="m-name">*@
+                                        @Html.TextBoxFor(c => c.Name, new { @class = "form-control", @placeholder = "Medicine Name" })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="user-form-full">
+                                        <label for="m-type">Medicine Type</label>
+                                        @*<select class="custom-select" id="m-type">
+                                                <option selected disabled>Choose type</option>
+                                                <option value="volvo">Tablet</option>
+                                                <option value="fiat">Syrup</option>
+                                                <option value="audi">Capsule</option>
+                                            </select>*@
+                                        @Html.DropDownListFor(c => c.MedicineType, new SelectList(Model.MedicineTypes), "---Select---", new { @class = "form-control custom-select" })
+                                        @Html.ValidationMessageFor(model => model.MedicineType, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="user-form-full">
+                                        <label for="m-size">Medicine Size</label>
+                                        @*<select class="custom-select" id="m-size">
+                                                <option selected disabled>Choose size</option>
+                                                <option value="volvo">100 mg</option>
+                                                <option value="fiat">250 mg</option>
+                                                <option value="audi">400 mg</option>
+                                                <option value="audi">500 mg</option>
+                                            </select>*@
+                                        @Html.DropDownListFor(c => c.MedicineSize, new SelectList(Model.MedicineSizes), "---Select---", new { @class = "form-control custom-select" })
+                                        @Html.ValidationMessageFor(model => model.MedicineSize, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="user-form-full">
+                                        <label for="c-name">Company Name</label>
+                                        @*<input type="text" class="form-control" placeholder="Beximco Pharmaceuticals Ltd" id="c-name">*@
+                                        @Html.DropDownListFor(c => c.CompanyId, new SelectList(Model.Companies, "Id", "Name"), "---Select---", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.CompanyId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="user-form-full">
+                                        <label for="t-price">Total Price</label>
+                                        @*<input type="text" class="form-control" placeholder="400" id="t-price">*@
+                                        @Html.TextBoxFor(c => c.TotalPrice, new { @class = "form-control", @placeholder = "Total Price" })
+                                        @Html.ValidationMessageFor(model => model.TotalPrice, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="user-form-full">
+                                        <label for="u-price">Unit Price</label>
+                                        @*<input type="text" class="form-control" placeholder="4" id="u-price">*@
+                                        @Html.TextBoxFor(c => c.UnitPrice, new { @class = "form-control", @placeholder = "Unit Price" })
+                                        @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="user-form-full">
+                                        <label for="m-detail">Details About Medicine</label>
+                                        @*<textarea name="" class="form-control" id="m-detail" rows="4"></textarea>*@
+                                        @Html.TextAreaFor(c => c.Details, new { @class = "form-control", @rows = "6", @placeholder = "Details" })
+                                        @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="user-form-full">
+                                        <label for="image">Upload Image</label>
+                                        @*<div class="image-preview">
+
+                                            </div>*@
+                                        @*<div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="customFile">
+                                                <label class="custom-file-label" for="customFile" name="ImageFileBase">Choose file</label>
+                                            </div>*@
+                                        <div class="card overflow-hidden">
+                                            <input type="file" class="dropify" data-height="240" id="imageFile" name="ImageFileBase" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="user-form-full">
+                                        <input type="submit" class="btn btn-form-fill" value="Submit">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@section scripts{
+
+    @Scripts.Render("~/bundles/jqueryval")
+    <!-- file uploads js -->
+    <script src="~/Plugins/Admin/assets/plugins/fileuploads/js/dropify.min.js"></script>
+    <script>
+        $('.dropify').dropify({
+            messages: {
+                'default': 'Drag and drop a file here or click',
+                'replace': 'Drag and drop or click to replace',
+                'remove': 'Remove',
+                'error': 'Ooops, something wrong appended.'
+            },
+            error: {
+                'fileSize': 'The file size is too big (2M max).'
+            }
+        });
+    </script>
+}

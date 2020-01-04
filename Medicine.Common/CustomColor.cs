@@ -16,9 +16,25 @@ namespace Medicine.Common
                 case EnumMedicineStatus.Approved:
                     return "badge-success";
                 case EnumMedicineStatus.Banned:
-                    return "badge-error";
+                    return "badge-warning";
                 case EnumMedicineStatus.Pending:
                     return "badge-warning";
+                case EnumMedicineStatus.Draft:
+                    return "";
+                default:
+                    return "";
+            }
+        }
+        public static string CardColor(EnumMedicineStatus val)
+        {
+            switch (val)
+            {
+                case EnumMedicineStatus.Approved:
+                    return "approved-card";
+                case EnumMedicineStatus.Banned:
+                    return "hold-permanetly-card";
+                case EnumMedicineStatus.Pending:
+                    return "pending-card";
                 case EnumMedicineStatus.Draft:
                     return "";
                 default:
@@ -34,7 +50,7 @@ namespace Medicine.Common
                 case EnumMedicineReportStatus.ToComapny:
                     return "badge-success";
                 case EnumMedicineReportStatus.Rejected:
-                    return "badge-error";
+                    return "badge-warning";
                 case EnumMedicineReportStatus.Pending:
                     return "badge-warning";
                 case EnumMedicineReportStatus.Draft:

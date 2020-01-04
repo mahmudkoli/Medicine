@@ -1,4 +1,5 @@
-﻿
+﻿@model Medicine.Web.Models.MedicineReportModel
+
 @{
     ViewBag.Title = "Report";
     Layout = "~/Views/Shared/_SearchLayout.cshtml";
@@ -42,83 +43,101 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="user-information">
-                    <form action="" class="mt-5">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <h3>Complainant Info</h3>
-                                <div class="user-form-full">
-                                    <label for="c-name">Full Name</label>
-                                    <input type="text" class="form-control" placeholder="Your Name" id="c-name">
-                                </div>
-                                <div class="user-form-full">
-                                    <label for="c-email">Email Address</label>
-                                    <input type="text" class="form-control" placeholder="Your Email" id="c-email">
-                                </div>
-                                <div class="user-form-full">
-                                    <label for="c-phone">Phone Number</label>
-                                    <input type="text" class="form-control" placeholder="Phone Number" id="c-phone">
-                                </div>
-                                <div class="user-form-full">
-                                    <label for="c-coment">Comments</label>
-                                    <textarea name="" class="form-control" id="c-coment" rows="4"></textarea>
-                                </div>
 
-                            </div>
-                            <div class="col-lg-4">
-                                <h3>Shop Info</h3>
-                                <div class="user-form-full">
-                                    <label for="shop-name">Shop Name</label>
-                                    <input type="text" class="form-control" placeholder="Shop Name" id="shop-name">
-                                </div>
-                                <div class="user-form-full">
-                                    <label for="shop-phone">Phone Number</label>
-                                    <input type="text" class="form-control" placeholder="Phone Number" id="shop-phone">
-                                </div>
-                                <div class="user-form-full">
-                                    <label for="s-area">Area</label>
-                                    <input type="text" class="form-control" placeholder="Shop Location" id="s-area">
-                                </div>
-                                <div class="user-form-full">
-                                    <label for="image">Upload Document(Zip file)</label>
+                    @using (Html.BeginForm("Report", "Medicine", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
 
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile">
-                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.ComplainantId)
+                        @Html.HiddenFor(model => model.MedicineInfoId)
+
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="mt-5">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <h3>Complainant Info</h3>
+                                    <div class="user-form-full">
+                                        <label for="c-name">Full Name</label>
+                                        <input type="text" class="form-control" value="@Model.Complainant.Name" placeholder="Your Name" id="c-name" disabled="">
                                     </div>
-                                    <span>Shop Image, Recipt Image, etc.</span>
+                                    <div class="user-form-full">
+                                        <label for="c-email">Email Address</label>
+                                        <input type="text" class="form-control" value="@Model.Complainant.Email" placeholder="Your Email" id="c-email" disabled="">
+                                    </div>
+                                    <div class="user-form-full">
+                                        <label for="c-phone">Phone Number</label>
+                                        <input type="text" class="form-control" value="@Model.Complainant.Phone" placeholder="Phone Number" id="c-phone" disabled="">
+                                    </div>
+                                    <div class="user-form-full">
+                                        <label for="c-coment">Comments</label>
+                                        @*<textarea name="" class="form-control" id="c-coment" rows="4"></textarea>*@
+                                        @Html.TextAreaFor(model => model.Comment, new { @class = "form-control", @row = "4" })
+                                        @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-4">
+                                    <h3>Shop Info</h3>
+                                    <div class="user-form-full">
+                                        <label for="shop-name">Shop Name</label>
+                                        @*<input type="text" class="form-control" placeholder="Shop Name" id="shop-name">*@
+                                        @Html.DropDownListFor(c => c.PharmacyId, new SelectList(Model.Pharmacies, "Id", "Name"), "---Select---", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.PharmacyId, "", new { @class = "text-danger" })
+                                    </div>
+                                    @*<div class="user-form-full">
+                            <label for="shop-phone">Phone Number</label>
+                            <input type="text" class="form-control" placeholder="Phone Number" id="shop-phone">
+                        </div>
+                        <div class="user-form-full">
+                            <label for="s-area">Area</label>
+                            <input type="text" class="form-control" placeholder="Shop Location" id="s-area">
+                        </div>*@
+                                    <div class="user-form-full">
+                                        <label for="image">Upload Document(Zip file)</label>
+
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="customFile" name="DocumentFileBase">
+                                            <label class="custom-file-label" for="customFile">Choose file</label>
+                                        </div>
+                                        <span>Recipt Image etc.</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <h3>Medicine Info</h3>
+                                    <div class="user-form-full">
+                                        <label for="r-m-name">Medicine Name</label>
+                                        <input type="text" class="form-control" value="@Model.MedicineInfo.Name" placeholder="Medicine Name" id="r-m-name" disabled="">
+                                    </div>
+                                    <div class="user-form-full">
+                                        <label for="r-c-name">Company Name</label>
+                                        <input type="text" class="form-control" value="@Model.MedicineInfo.Company.Name" placeholder="Company Name" id="r-c-name" disabled="">
+                                    </div>
+                                    <div class="user-form-full">
+                                        <label for="o-price">Orginal Price</label>
+                                        <input type="text" class="form-control" value="@Model.MedicineInfo.TotalPrice" placeholder="Orginal Price" id="o-price" disabled="">
+                                    </div>
+                                    <div class="user-form-full">
+                                        <label for="a-price">Asking Price</label>
+                                        @*<input type="text" class="form-control" placeholder="Asking Price" id="a-price">*@
+                                        @Html.TextBoxFor(model => model.AskingPrice, new { @class = "form-control", @placeholder = "Asking Price" })
+                                        @Html.ValidationMessageFor(model => model.AskingPrice, "", new { @class = "text-danger" })
+                                    </div>
+
                                 </div>
                             </div>
-                            <div class="col-lg-4">
-                                <h3>Medicine Info</h3>
-                                <div class="user-form-full">
-                                    <label for="r-m-name">Medicine Name</label>
-                                    <input type="text" class="form-control" placeholder="Medicine Name" id="r-m-name" ">
-                                </div>
-                                <div class="user-form-full">
-                                    <label for="r-c-name">Company Name</label>
-                                    <input type="text" class="form-control" placeholder="Company Name" id="r-c-name">
-                                </div>
-                                <div class="user-form-full">
-                                    <label for="o-price">Orginal Price</label>
-                                    <input type="text" class="form-control" placeholder="Orginal Price" id="o-price">
-                                </div>
-                                <div class="user-form-full">
-                                    <label for="a-price">Asking Price</label>
-                                    <input type="text" class="form-control" placeholder="Asking Price" id="a-price">
-                                </div>
 
+                            <div class="row">
+
+                                <div class="col-lg-4">
+                                    <div class="user-form-full">
+                                        <input type="submit" class="btn btn-form-fill" value="Submit">
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                    }
 
-                        <div class="row">
-
-                            <div class="col-lg-4">
-                                <div class="user-form-full">
-                                    <input type="submit" class="btn btn-form-fill" value="Submit">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -126,3 +145,7 @@
     </div>
 </div>
 
+@section scripts{
+
+    @Scripts.Render("~/bundles/jqueryval")
+}

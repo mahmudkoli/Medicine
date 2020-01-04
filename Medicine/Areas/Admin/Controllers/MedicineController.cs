@@ -76,5 +76,11 @@ namespace Medicine.Web.Areas.Admin.Controllers
             _medicineModel.LoadAllListData();
             return View(_medicineModel);
         }
+
+        public ActionResult ChangeStatus(string id, EnumMedicineStatus status)
+        {
+            _medicineModel.ChangeStatus(id, status);
+            return RedirectToAction("Index");
+        }
     }
 }

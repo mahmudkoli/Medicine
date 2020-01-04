@@ -48,6 +48,14 @@ namespace Medicine.Services
             }
         }
 
+        public void MedicineReportInc(string id)
+        {
+            var entity = _medicineUnitOfWork.MedicineRepository.GetById(id);
+            entity.ReportCount += 1;
+            _medicineUnitOfWork.MedicineRepository.Update(entity);
+            _medicineUnitOfWork.Save();
+        }
+
         public IEnumerable<MedicineInfo> GetAll(string medicineName, string medicineSize, string medicineType)
         {
             return _medicineUnitOfWork.MedicineRepository.GetAll(medicineName, medicineSize, medicineType);
@@ -61,6 +69,41 @@ namespace Medicine.Services
         public IEnumerable<MedicineInfo> GetAllPending()
         {
             return _medicineUnitOfWork.MedicineRepository.GetAll().Where(x => x.Status == EnumMedicineStatus.Pending);
+        }
+
+        public void ChangeStatus(string id, EnumMedicineStatus status)
+        {
+            _medicineUnitOfWork.MedicineRepository.ChangeStatus(id, status);
+        }
+
+        public string AddByUser(MedicineInfo entity)
+        {
+            try
+            {
+                var newEntity = new MedicineInfo()
+                {
+                    Name = entity.Name,
+                    MedicineType = entity.MedicineType,
+                    MedicineSize = entity.MedicineSize,
+                    Details = entity.Details,
+                    ImageUrl = entity.ImageUrl,
+                    CompanyId = entity.CompanyId,
+                    ContributorId = entity.ContributorId,
+                    TotalPrice = entity.TotalPrice,
+                    UnitPrice = entity.UnitPrice,
+                    Status = EnumMedicineStatus.Pending
+                };
+
+                _medicineUnitOfWork.MedicineRepository.Add(newEntity);
+                _medicineUnitOfWork.Save();
+
+                return newEntity.Id;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return string.Empty;
+            }
         }
 
         public MedicineInfo GetById(string id)

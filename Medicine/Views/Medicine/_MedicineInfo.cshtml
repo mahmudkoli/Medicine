@@ -1,7 +1,8 @@
 ﻿@model Medicine.Entities.MedicineInfo
+@using Medicine.Common
 
 <div class="col-lg-6">
-    <div class="search-card approved-card">
+    <div class="search-card @CustomColor.CardColor(Model.Status)">
         <div class="card-head">
             <div class="card-head-left">
                 <h3 class="card-title"> @Model.Name @Model.MedicineSize (@Model.MedicineType) <a href="@Url.Action("Details","Medicine", new { id = Model.Id })" class="btn-img"> Show image </a> </h3>

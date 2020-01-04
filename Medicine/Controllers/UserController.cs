@@ -71,8 +71,9 @@ namespace Medicine.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Login()
+        public ActionResult Login(string ReturnUrl)
         {
+            ViewBag.ReturnUrl = ReturnUrl;
             var model = new LoginUserModel();
             return View(model);
         }

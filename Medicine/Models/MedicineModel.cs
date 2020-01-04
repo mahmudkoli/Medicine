@@ -57,7 +57,7 @@ namespace Medicine.Web.Models
         {
             this.ImageUrl = CustomFile.SaveImageFile(this.ImageFileBase, this.Name, this.Id, "Medicine");
             this.ContributorId = AuthenticatedUserModel.GetUserFromIdentity().Id;
-            return _medicineService.AddByAdmin(this);
+            return _medicineService.AddByUser(this);
         }
 
         public string Update()
