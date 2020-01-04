@@ -127,10 +127,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CompanyPharmacyController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MedicineController.cs" />
     <Compile Include="Areas\Admin\Controllers\MedicineReportController.cs" />
     <Compile Include="Areas\Admin\Model\CompanyModel.cs" />
+    <Compile Include="Areas\Admin\Model\CompanyPharmacyModel.cs" />
     <Compile Include="Areas\Admin\Model\MedicineModel.cs" />
     <Compile Include="Areas\Admin\Model\MedicineReportModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -474,6 +476,9 @@
     <Content Include="Areas\Admin\Views\MedicineReport\Index.cshtml" />
     <Content Include="Areas\Admin\Views\MedicineReport\Pending.cshtml" />
     <Content Include="Areas\Admin\Views\MedicineReport\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\CompanyPharmacy\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\CompanyPharmacy\Company.cshtml" />
+    <Content Include="Areas\Admin\Views\CompanyPharmacy\Pharmacy.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

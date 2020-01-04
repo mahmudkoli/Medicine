@@ -58,7 +58,7 @@
             <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
             <aside class="app-sidebar ">
                 <div class="sidebar-img">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="#">
                         LOGO
                     </a>
                     <ul class="side-menu">
@@ -70,6 +70,26 @@
                         </li>
                         @if (User.IsInRole(Role.Admin))
                         {
+                            <li class="slide">
+                                <a class="side-menu__item" data-toggle="slide" href="#">
+                                    <i class="side-menu__icon fe fe-grid"></i>
+                                    <span class="side-menu__label">Company or Pharmacy</span>
+                                    <i class="angle fa fa-angle-right"></i>
+                                </a>
+
+                                <ul class="slide-menu">
+                                    <li>
+                                        <a href="@Url.Action("Add","CompanyPharmacy", new { Area = "Admin" })" class="slide-item">Add Company or Pharmacy</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Company","CompanyPharmacy", new { Area = "Admin" })" class="slide-item">View All Company</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Pharmacy","CompanyPharmacy", new { Area = "Admin" })" class="slide-item">View All Pharmacy</a>
+                                    </li>
+                                </ul>
+                            </li>
+
                             <li class="slide">
                                 <a class="side-menu__item" data-toggle="slide" href="#">
                                     <i class="side-menu__icon fe fe-grid"></i>

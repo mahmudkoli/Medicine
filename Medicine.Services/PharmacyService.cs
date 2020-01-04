@@ -12,15 +12,43 @@ namespace Medicine.Services
 {
     public class PharmacyService
     {
-        private PharmacyUnitOfWork _companyUnitOfWork;
+        private PharmacyUnitOfWork _pharmacyUnitOfWork;
         public PharmacyService()
         {
-            _companyUnitOfWork = new PharmacyUnitOfWork(new MedicineDbContext());
+            _pharmacyUnitOfWork = new PharmacyUnitOfWork(new MedicineDbContext());
         }
 
         public IEnumerable<User> GetAll()
         {
-            return _companyUnitOfWork.PharmacyRepository.GetAll().Where(x => x.UserRole == Role.Pharmacy);
+            return _pharmacyUnitOfWork.PharmacyRepository.GetAll().Where(x => x.UserRole == Role.Pharmacy);
+        }
+
+        public string Add(User entity)
+        {
+            try
+            {
+                var newEntity = new User()
+                {
+                    Name = entity.Name,
+                    Email = entity.Email,
+                    Phone = entity.Phone,
+                    Address = entity.Address,
+                    Password = CustomCrypto.Hash(DefaultValue.UserPassword),
+                    IsEmailVerified = true,
+                    ActivationCode = Guid.NewGuid(),
+                    UserRole = Role.Pharmacy
+                };
+                _pharmacyUnitOfWork.PharmacyRepository.Add(newEntity);
+
+                _pharmacyUnitOfWork.Save();
+
+                return newEntity.Id;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return string.Empty;
+            }
         }
     }
 }
