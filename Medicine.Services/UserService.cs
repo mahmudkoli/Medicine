@@ -88,7 +88,7 @@ namespace Medicine.Services
                     user.ResetPasswordCode = Guid.NewGuid().ToString();
                     _userUnitOfWork.UserRepository.Update(user);
 
-                    CustomEmail.SendVerificationLinkEmail(user.Email, user.ResetPasswordCode, EmailType.ResetPassword);
+                    //CustomEmail.SendVerificationLinkEmail(user.Email, user.ResetPasswordCode, EmailType.ResetPassword);
 
                     return _userUnitOfWork.Save();
                 }

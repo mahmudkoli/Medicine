@@ -31,7 +31,10 @@
                         <thead>
                             <tr>
                                 <th class="wd-25p">@Html.DisplayNameFor(model => model.Name)</th>
-                                <th class="wd-15p">@Html.DisplayNameFor(model => model.CompanyId)</th>
+                                @if (!User.IsInRole(Role.Company))
+                                {
+                                    <th class="wd-15p">@Html.DisplayNameFor(model => model.CompanyId)</th>
+                                }
                                 <th class="wd-5p">@Html.DisplayNameFor(model => model.MedicineType)</th>
                                 <th class="wd-5p">@Html.DisplayNameFor(model => model.MedicineSize)</th>
                                 <th class="wd-25p">@Html.DisplayNameFor(model => model.ContributorId)</th>
@@ -42,29 +45,35 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>@Html.DisplayFor(model => item.Name)</td>
+                            <tr>
+                                <td>@Html.DisplayFor(model => item.Name)</td>
+                                @if (!User.IsInRole(Role.Company))
+                                {
                                     <td>@Html.DisplayFor(model => item.Company.Name)</td>
-                                    <td>@Html.DisplayFor(model => item.MedicineType)</td>
-                                    <td>@Html.DisplayFor(model => item.MedicineSize)</td>
-                                    <td>@Html.DisplayFor(model => item.Contributor.Name)</td>
-                                    <td><span class="badge @CustomColor.BadgeColor(item.Status)">@Html.DisplayFor(model => item.Status)</span></td>
-                                    <td>
-                                        <div class="btn-group btn-block">
-                                            <button type="button" class="btn btn-info btn-sm  btn-pill btn-block">Action</button>
-                                            <button type="button" class="btn btn-pill btn-sm btn-info dropdown-toggle" data-toggle="dropdown">
-                                                <span class="caret"></span>
-                                                <span class="sr-only">Toggle Dropdown</span>
-                                            </button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="@Url.Action("Details","Medicine", new { id = item.Id })">View</a>
-                                                <a class="dropdown-item" href="@Url.Action("Edit","Medicine", new { id = item.Id })">Edit</a>
+                                }
+                                <td>@Html.DisplayFor(model => item.MedicineType)</td>
+                                <td>@Html.DisplayFor(model => item.MedicineSize)</td>
+                                <td>@Html.DisplayFor(model => item.Contributor.Name)</td>
+                                <td><span class="badge @CustomColor.BadgeColor(item.Status)">@Html.DisplayFor(model => item.Status)</span></td>
+                                <td>
+                                    <div class="btn-group btn-block">
+                                        <button type="button" class="btn btn-info btn-sm  btn-pill btn-block">Action</button>
+                                        <button type="button" class="btn btn-pill btn-sm btn-info dropdown-toggle" data-toggle="dropdown">
+                                            <span class="caret"></span>
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="@Url.Action("Details","Medicine", new { id = item.Id })">View</a>
+                                            <a class="dropdown-item" href="@Url.Action("Edit","Medicine", new { id = item.Id })">Edit</a>
+                                            @if (User.IsInRole(Role.Admin))
+                                            {
                                                 <a class="dropdown-item" href="@Url.Action("ChangeStatus", "Medicine", new { id = item.Id, status = EnumMedicineStatus.Approved, Area = "Admin" })">Approved</a>
                                                 <a class="dropdown-item" href="@Url.Action("ChangeStatus", "Medicine", new { id = item.Id, status = EnumMedicineStatus.Banned, Area = "Admin" })">Banned</a>
-                                            </div>
+                                            }
                                         </div>
-                                    </td>
-                                </tr>
+                                    </div>
+                                </td>
+                            </tr>
                             }
 
                         </tbody>

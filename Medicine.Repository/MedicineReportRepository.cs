@@ -26,5 +26,15 @@ namespace Medicine.Repository
             entity.UpdatedAt = DateTime.Now;
             _context.SaveChanges();
         }
+
+        public void AddFeedback(ReportFeedback entity)
+        {
+            _context.ReportFeedbacks.Add(entity);
+        }
+
+        public IEnumerable<ReportFeedback> GetAllFeedback()
+        {
+            return _context.ReportFeedbacks.Where(x => !x.IsDeleted).OrderByDescending(x => x.CreatedAt);
+        }
     }
 }

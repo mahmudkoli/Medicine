@@ -59,5 +59,29 @@ namespace Medicine.Web.Areas.Admin.Controllers
             _medicineReportModel.ChangeStatus(id, status);
             return RedirectToAction("Pending");
         }
+
+        [HttpPost]
+        public ActionResult SendFeedback(string MedicineReportId, string FeedbackMessage)
+        {
+            _medicineReportModel.SendFeedback(MedicineReportId, FeedbackMessage);
+            return RedirectToAction("Pending");
+        }
+
+        [HttpGet]
+        public ActionResult ReportFeedback()
+        {
+            var result = new List<ReportFeedback>();
+
+            if (User.IsInRole(Role.Admin))
+                result = _medicineReportModel.GetAllFeedback().ToList();
+            else if (User.IsInRole(Role.Company))
+                result = _medicineReportModel.GetAllFeedbackForCompany().ToList();
+            else if (User.IsInRole(Role.Pharmacy))
+                result = _medicineReportModel.GetAllFeedbackForPharmacy().ToList();
+            //else if (User.IsInRole(Role.NormalUser))
+            //    result = _medicineReportModel.GetAllFeedbackForNormalUser().ToList();
+
+            return View(result);
+        }
     }
 }

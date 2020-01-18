@@ -1,6 +1,8 @@
 ﻿@model Medicine.Web.Areas.Admin.Model.MedicineModel
+@using Medicine.Common
 @{
     ViewBag.Title = "Edit";
+    var authUser = Medicine.Web.Models.AuthenticatedUserModel.GetUserFromIdentity();
 }
 
 <!-- form Uploads -->
@@ -38,12 +40,24 @@
                                 @Html.TextBoxFor(c => c.Name, new { @class = "form-control", @placeholder = "Medicine Name" })
                                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                             </div>
-                            <div class="form-group">
-                                <label class="form-label">@Html.DisplayNameFor(model => model.CompanyId)</label>
-                                @*<input type="text" class="form-control" name="example-text-input" placeholder="Napa">*@
-                                @Html.DropDownListFor(c => c.CompanyId, new SelectList(Model.Companies, "Id", "Name"), "---Select---", new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.CompanyId, "", new { @class = "text-danger" })
-                            </div>
+                            @if (!User.IsInRole(Role.Company))
+                            {
+                                <div class="form-group">
+                                    <label class="form-label">@Html.DisplayNameFor(model => model.CompanyId)</label>
+                                    @*<input type="text" class="form-control" name="example-text-input" placeholder="Napa">*@
+                                    @Html.DropDownListFor(c => c.CompanyId, new SelectList(Model.Companies, "Id", "Name"), "---Select---", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.CompanyId, "", new { @class = "text-danger" })
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group">
+                                    <label class="form-label">@Html.DisplayNameFor(model => model.MedicineType)</label>
+                                    @Html.DropDownListFor(c => c.MedicineType, new SelectList(Model.MedicineTypes), "---Select---", new { @class = "form-control custom-select" })
+                                    @Html.ValidationMessageFor(model => model.MedicineType, "", new { @class = "text-danger" })
+                                </div>
+                                @Html.Hidden("CompanyId", authUser.Id)
+                            }
 
                             <div class="form-group mb-0">
                                 <label class="form-label">@Html.DisplayNameFor(model => model.Details)</label>
@@ -57,26 +71,17 @@
 
                         <div class="col-md-4">
 
-                            <div class="form-group">
-                                <label class="form-label">@Html.DisplayNameFor(model => model.MedicineType)</label>
-                                @*<select name="country" id="select-countries" class="form-control custom-select">
-                                        <option selected disabled>Choose type</option>
-                                        <option value="volvo">Tablet</option>
-                                        <option value="fiat">Syrup</option>
-                                        <option value="audi">Capsule</option>
-                                    </select>*@
-                                @Html.DropDownListFor(c => c.MedicineType, new SelectList(Model.MedicineTypes), "---Select---", new { @class = "form-control custom-select" })
-                                @Html.ValidationMessageFor(model => model.MedicineType, "", new { @class = "text-danger" })
-                            </div>
+
+                            @if (!User.IsInRole(Role.Company))
+                            {
+                                <div class="form-group">
+                                    <label class="form-label">@Html.DisplayNameFor(model => model.MedicineType)</label>
+                                    @Html.DropDownListFor(c => c.MedicineType, new SelectList(Model.MedicineTypes), "---Select---", new { @class = "form-control custom-select" })
+                                    @Html.ValidationMessageFor(model => model.MedicineType, "", new { @class = "text-danger" })
+                                </div>
+                            }
                             <div class="form-group">
                                 <label class="form-label">@Html.DisplayNameFor(model => model.MedicineSize)</label>
-                                @*<select name="country" id="select-countries" class="form-control custom-select">
-                                        <option selected disabled>Choose size</option>
-                                        <option value="volvo">100 mg</option>
-                                        <option value="fiat">250 mg</option>
-                                        <option value="audi">400 mg</option>
-                                        <option value="audi">500 mg</option>
-                                    </select>*@
                                 @Html.DropDownListFor(c => c.MedicineSize, new SelectList(Model.MedicineSizes), "---Select---", new { @class = "form-control custom-select" })
                                 @Html.ValidationMessageFor(model => model.MedicineSize, "", new { @class = "text-danger" })
                             </div>
@@ -102,7 +107,7 @@
                             <div class="form-group">
                                 <label class="form-label">@Html.DisplayNameFor(model => model.ContributorId)</label>
                                 @*<textarea class="form-control" name="example-textarea-input" rows="4" placeholder="text here.."></textarea>*@
-                                @Html.TextBox("ContributorName", Model.Contributor?.Name??"None", new { @class = "form-control", @disabled="true" })
+                                @Html.TextBox("ContributorName", Model.Contributor?.Name ?? "None", new { @class = "form-control", @disabled = "true" })
                                 @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
                             </div>
 

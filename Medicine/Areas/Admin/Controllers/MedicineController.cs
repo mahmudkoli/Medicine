@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Medicine.Web.Areas.Admin.Controllers
 {
-    [Authorize(Roles = Role.Admin)]
+    [Authorize]
     public class MedicineController : Controller
     {
         private MedicineModel _medicineModel;
@@ -20,7 +20,10 @@ namespace Medicine.Web.Areas.Admin.Controllers
         
         public ActionResult Index()
         {
-            return View(_medicineModel.GetAll());
+            if(User.IsInRole(Role.Admin))
+                return View(_medicineModel.GetAll());
+            else
+                return View(_medicineModel.GetAll().Where(x => x.CompanyId == Medicine.Web.Models.AuthenticatedUserModel.GetUserFromIdentity().Id));
         }
 
         public ActionResult Pending()

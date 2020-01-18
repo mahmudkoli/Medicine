@@ -96,12 +96,59 @@
                             var showName = User.IsInRole(Role.Admin) ? "Company" : "Pharmacy";
                         }
 
-                        @if ((User.IsInRole(Role.Admin) && EnumMedicineReportStatus.Pending == Model.Status) || (User.IsInRole(Role.Company) && EnumMedicineReportStatus.ToComapny == Model.Status) )
+                        @if ((User.IsInRole(Role.Admin) && EnumMedicineReportStatus.Pending == Model.Status) || (User.IsInRole(Role.Company) && EnumMedicineReportStatus.ToComapny == Model.Status))
                         {
                             <a href="@Url.Action("ChangeStatus", "MedicineReport", new { id = Model.Id, status = status, Area = "Admin" })" class="btn btn-pill btn-primary">Forward to @showName</a>
                         }
                     </div>
                 </div>
+
+                @if (User.IsInRole(Role.Pharmacy))
+                {
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card shadow overflow-hidden">
+                            <div class="card-header">
+                                <h2 class="mb-0">Send mail To the User</h2>
+                            </div>
+                            <div class="card-body">
+                                @using (Html.BeginForm("SendFeedback", "MedicineReport", FormMethod.Post))
+                                {
+
+                                    @Html.AntiForgeryToken()
+                                    @Html.Hidden("MedicineReportId", Model.Id)
+                                    <div class="row">
+                                        <div class="col-md-4">
+
+                                            <div class="form-group">
+                                                <label class="form-label">Full Name</label>
+                                                <input type="text" class="form-control" name="example-disabled-input" value="@Model.Complainant.Name" disabled="">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label">Email</label>
+                                                <input type="text" class="form-control" name="example-disabled-input" value="@Model.Complainant.Email" disabled="">
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label class="form-label">Comments</label>
+                                                <textarea class="form-control" name="FeedbackMessage" rows="6"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <button type="submit" class="btn btn-pill btn-primary">Send</button>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+
             </div>
         </div>
     </div>

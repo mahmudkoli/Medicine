@@ -45,7 +45,7 @@ namespace Medicine.Common
         {
             switch (val)
             {
-                case EnumMedicineReportStatus.Done:
+                case EnumMedicineReportStatus.Completed:
                 case EnumMedicineReportStatus.ToPharmacy:
                 case EnumMedicineReportStatus.ToComapny:
                     return "badge-success";

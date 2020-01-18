@@ -58,6 +58,31 @@ namespace Medicine.Web.Areas.Admin.Model
             return _medicineReportService.GetAllPendingForPharmacy(AuthenticatedUserModel.GetUserFromIdentity().Id);
         }
 
+        public void SendFeedback(string medicineReportId, string feedbackMessage)
+        {
+            _medicineReportService.SendFeedback(medicineReportId, feedbackMessage);
+        }
+
+        public IEnumerable<ReportFeedback> GetAllFeedback()
+        {
+            return _medicineReportService.GetAllFeedback();
+        }
+
+        public IEnumerable<ReportFeedback> GetAllFeedbackForCompany()
+        {
+            return _medicineReportService.GetAllFeedback().Where(x => x.MedicineReport.MedicineInfo.CompanyId == AuthenticatedUserModel.GetUserFromIdentity().Id);
+        }
+
+        public IEnumerable<ReportFeedback> GetAllFeedbackForPharmacy()
+        {
+            return _medicineReportService.GetAllFeedback().Where(x => x.MedicineReport.PharmacyId == AuthenticatedUserModel.GetUserFromIdentity().Id);
+        }
+
+        //public IEnumerable<ReportFeedback> GetAllFeedbackForNormalUser()
+        //{
+        //    return _medicineReportService.GetAllFeedback().Where(x => x.MedicineReport.ComplainantId == AuthenticatedUserModel.GetUserFromIdentity().Id);
+        //}
+
         public IEnumerable<MedicineReport> GetAllPendingForCompany()
         {
             return _medicineReportService.GetAllPendingForCompany(AuthenticatedUserModel.GetUserFromIdentity().Id);

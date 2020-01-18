@@ -479,6 +479,7 @@
     <Content Include="Areas\Admin\Views\CompanyPharmacy\Add.cshtml" />
     <Content Include="Areas\Admin\Views\CompanyPharmacy\Company.cshtml" />
     <Content Include="Areas\Admin\Views\CompanyPharmacy\Pharmacy.cshtml" />
+    <Content Include="Areas\Admin\Views\MedicineReport\ReportFeedback.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

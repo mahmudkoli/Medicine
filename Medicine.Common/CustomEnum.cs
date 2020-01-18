@@ -20,6 +20,6 @@ namespace Medicine.Common
         Rejected = 3,
         ToComapny = 4,
         ToPharmacy = 5,
-        Done = 6
+        Completed = 6
     }
 }

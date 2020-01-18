@@ -58,13 +58,40 @@ namespace Medicine.Services
         public IEnumerable<MedicineReport> GetAllForPharmacy(string id)
         {
             return _medicineReportUnitOfWork.MedicineReportRepository.GetAll()
-                .Where(x => (x.Status == EnumMedicineReportStatus.ToPharmacy || x.Status == EnumMedicineReportStatus.Done) && x.PharmacyId == id);
+                .Where(x => (x.Status == EnumMedicineReportStatus.ToPharmacy || x.Status == EnumMedicineReportStatus.Completed) && x.PharmacyId == id);
         }
 
         public IEnumerable<MedicineReport> GetAllForCompany(string id)
         {
             return _medicineReportUnitOfWork.MedicineReportRepository.GetAll()
-                .Where(x => (x.Status == EnumMedicineReportStatus.ToPharmacy || x.Status == EnumMedicineReportStatus.ToComapny || x.Status == EnumMedicineReportStatus.Done) && x.MedicineInfo.CompanyId == id);
+                .Where(x => (x.Status == EnumMedicineReportStatus.ToPharmacy || x.Status == EnumMedicineReportStatus.ToComapny || x.Status == EnumMedicineReportStatus.Completed) && x.MedicineInfo.CompanyId == id);
+        }
+
+        public void SendFeedback(string medicineReportId, string feedbackMessage)
+        {
+            var mr = GetById(medicineReportId);
+            var cmUser = mr.Complainant;
+            var phUser = mr.Pharmacy;
+
+            // Status changed
+            ChangeStatus(medicineReportId, EnumMedicineReportStatus.Completed);
+
+            // Add new feedback
+            var newFeedback = new ReportFeedback()
+            { 
+                MedicineReportId = medicineReportId,
+                FeedbackMessage = feedbackMessage
+            };
+            _medicineReportUnitOfWork.MedicineReportRepository.AddFeedback(newFeedback);
+            _medicineReportUnitOfWork.Save();
+
+            //Send Email to User
+            CustomEmail.SendFeedbackEmail(cmUser.Email, phUser.Name, cmUser.Name, feedbackMessage);
+        }
+
+        public IEnumerable<ReportFeedback> GetAllFeedback()
+        {
+            return _medicineReportUnitOfWork.MedicineReportRepository.GetAllFeedback();
         }
 
         public void ChangeStatus(string id, EnumMedicineReportStatus status)

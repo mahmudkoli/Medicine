@@ -51,6 +51,10 @@
     <Compile Include="Base\IRepository.cs" />
     <Compile Include="Base\Repository.cs" />
     <Compile Include="MedicineReportRepository.cs" />
+    <Compile Include="Migrations\202001180812510_feedbackEntityAdd.cs" />
+    <Compile Include="Migrations\202001180812510_feedbackEntityAdd.Designer.cs">
+      <DependentUpon>202001180812510_feedbackEntityAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="PharmacyRepository.cs" />
     <Compile Include="CompanyRepository.cs" />
     <Compile Include="MedicineReportUnitOfWork.cs" />
@@ -127,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001031803338_entityUpdatess.resx">
       <DependentUpon>202001031803338_entityUpdatess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001180812510_feedbackEntityAdd.resx">
+      <DependentUpon>202001180812510_feedbackEntityAdd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
